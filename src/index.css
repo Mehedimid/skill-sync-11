@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 a.active{
-  @apply text-red-400 text-base underline font-semibold
+  @apply bg-black py-1 px-2 rounded
 }

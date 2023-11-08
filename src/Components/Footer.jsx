@@ -1,28 +1,34 @@
 import React from "react";
+import logo11 from "../assets/logo11.png";
 
 function Footer(props) {
   return (
     <div>
       <footer className="w-full max-w-[85rem] py-10  text-[#86C232] font-medium px-4 sm:px-6 lg:px-8 mx-auto">
         {/* <!-- Grid --> */}
-        <div className="text-center">
-          <div>SkillSync</div>
+        <div className="text-center ">
+          <div className="flex justify-center items-center  text-xl">
+            <div className="flex justify-center">
+              <img src={logo11} className="w-12 h-12" />
+            </div>
+            SkillSync
+          </div>
           {/* <!-- End Col --> */}
 
           <div className="mt-3">
             <p className="text-white">
               We're part of the{" "}
-              <span 
-                className=" text-[#86C232] font-bold dark:text-blue-500 dark:hover:text-blue-400">
+              <span className=" text-[#86C232] font-bold dark:text-blue-500 dark:hover:text-blue-400">
                 SkillSync
               </span>
               family.
             </p>
             <p className="text-white ">
-              © 2023,               <span 
-                className=" text-[#86C232] font-bold dark:text-blue-500 dark:hover:text-blue-400">
+              © 2023,{" "}
+              <span className=" text-[#86C232] font-bold dark:text-blue-500 dark:hover:text-blue-400">
                 SkillSync
-              </span>. All rights reserved. Service sharing for a stronger community."
+              </span>
+              . All rights reserved. Service sharing for a stronger community."
             </p>
           </div>
 

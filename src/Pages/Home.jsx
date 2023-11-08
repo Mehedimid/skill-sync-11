@@ -1,9 +1,14 @@
 import React from "react";
 import Header from "../Components/Header";
+import { Helmet } from "react-helmet";
+import titles from "../titles";
 
 function Home(props) {
   return (
     <>
+          <Helmet>
+        <title>{titles.home}</title>
+      </Helmet>
       <main>
         <Header></Header>
         <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">

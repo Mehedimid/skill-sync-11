@@ -12,6 +12,7 @@ import Services from './Pages/Services.jsx';
 import MyServices from './Pages/Dashboard/MyServices.jsx';
 import MySchedules from './Pages/Dashboard/MySchedules.jsx';
 import AddServices from './Pages/Dashboard/AddServices.jsx';
+import Login from './Pages/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path:'/',
         element:<Home></Home>
       }, 
+      {
+        path:'/login',
+        element: <Login></Login>
+      },
       {
         path:'/all-services',
         element:<Services></Services>
