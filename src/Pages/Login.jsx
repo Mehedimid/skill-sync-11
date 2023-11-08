@@ -34,7 +34,8 @@ function Login(props) {
       </Helmet>
 
 
-      <div className="min-h-screen flex justify-center items-center  ">
+      <div className="min-h-screen text-[#86C232]
+ flex justify-center items-center  ">
 		<div className="w-1/2">
 			<img src={login} alt="" />
 		</div>
@@ -50,21 +51,21 @@ function Login(props) {
             <div className="space-y-4">
 				{/* email field  */}
               <div>
-                <p className="block mb-2 text-sm">
+                <p className="block mb-2 font-medium">
                   Email address
                 </p>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="leroy@jenkins.com"
+                  placeholder="example@gmail.com"
                   className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                 />
               </div>
 			  {/* password field  */}
               <div>
                 <div className="flex justify-between mb-2">
-                  <p  className="text-sm">
+                  <p  className="font-medium">
                     Password
                   </p>
                   <a

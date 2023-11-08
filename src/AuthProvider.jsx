@@ -24,10 +24,16 @@ function AuthProvider({children}) {
         return signOut(auth)
     }
 
+
+
      // --- on auth state change --- 
        useEffect(()=> {
        onAuthStateChanged(auth, currentUser => {
         setUser(currentUser)
+        if(currentUser){
+            console.log(currentUser)
+        }
+      
         setLoading(false)
        })
        },[])

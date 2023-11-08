@@ -1,11 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
-import profilepng from "../assets/profile.png";
 import logo11 from "../assets/logo11.png";
 import profilesvg from "../assets/profile.svg";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { authContext } from "../AuthProvider";
 
 function Navbar(props) {
-  const [user, setUser] = useState(false);
+  const {logOut , user} = useContext(authContext)
+
+  const handleLogout = () => {
+    logOut()
+    .then(result => {
+      // logged out 
+    })
+    .catch(error=> console.log(error.message))
+  }
 
   const navlinks2 = (
     <>
@@ -102,11 +110,16 @@ function Navbar(props) {
           <div>
             {user ? (
               <div className="flex justify-center items-center gap-1 text-white">
-                <h2>Mehedi Hasan</h2>
+                <h2>
+                  {
+                    user ? user.displayName : '?'
+                  }
+                </h2>
                 <img
-                  src={profilesvg}
+                  src={user?.photoURL ? user.photoURL : profilesvg}
                   className="h-12 w-12 rounded-full bg-white"
                 />
+                <button className="text-[#86C232] object-cover" onClick={handleLogout}>Log out</button>
               </div>
             ) : (
               <NavLink to="/login" className="text-[#86C232] ">

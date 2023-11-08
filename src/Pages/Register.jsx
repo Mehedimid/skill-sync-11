@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../AuthProvider";
+import { updateProfile } from "firebase/auth";
+import auth from "../firebase/firebase.config";
 
 function Register(props) {
   
-  const {createUser} = useContext(authContext)
+  const {createUser } = useContext(authContext)
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -36,12 +38,22 @@ function Register(props) {
   //  create user ===
   createUser(email, password)
   .then((res) => {
-    console.log(res.user);
+    const currentUser = res.user
     toast.success('wow!!! Successfully Registered!!')
-    
+      // update user profile 
+  updateProfile( currentUser, {
+    displayName:username, 
+    photoURL: photo,
+  })
+  .then(()=> console.log('profile updated'))
+  .catch(error => console.log(error.message))
     // navigate('/')
   })
   .catch((error) => toast.error(error.message));
+
+
+
+
   };
 
   return (
