@@ -40,7 +40,7 @@ function Navbar(props) {
 
           {/*only for mobile start  */}
           <div className="dropdown md:hidden">
-            <label tabIndex={0} className="btn btn-ghost btn-circle">
+            <p tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -54,7 +54,7 @@ function Navbar(props) {
                   d="M4 6h16M4 12h16M4 18h7"
                 />
               </svg>
-            </label>
+            </p>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -66,9 +66,9 @@ function Navbar(props) {
               </li>
               {}
               <li className="dropdown dropdown-hover">
-                <label tabIndex={0} className=" m-1">
+                <p tabIndex={0} className=" m-1">
                   Dashboard
-                </label>
+                </p>
                 <ul
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -89,9 +89,9 @@ function Navbar(props) {
               <NavLink to="/all-services">Services </NavLink>
             </li>
             <li className="dropdown dropdown-hover">
-              <label tabIndex={0} className=" m-1">
+              <p tabIndex={0} className=" m-1">
                 Dashboard
-              </label>
+              </p>
               <ul
                 tabIndex={0}
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">

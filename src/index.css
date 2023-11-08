@@ -5,3 +5,5 @@
 a.active{
   @apply bg-black py-1 px-2 rounded
 }
+
+.sizing{@apply  mx-auto w-11/12}

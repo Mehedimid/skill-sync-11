@@ -1,9 +1,32 @@
 import { Helmet } from "react-helmet";
 import titles from "../titles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login from "../assets/login.svg"
+import { useContext } from "react";
+import { authContext } from "../AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 function Login(props) {
+  const {logInUser} = useContext(authContext)
+  const navigate = useNavigate()
+
+  const handleLogin = e => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+      
+    logInUser(email, password) 
+    .then(res => {
+      // console.log(res.user)
+      navigate( '/')
+    })
+    .catch(error => {
+      toast.error(error.message)
+    })
+ 
+  }
   return (
     <>
       <Helmet>
@@ -23,13 +46,13 @@ function Login(props) {
             </p>
           </div>
 		  {/* form == */}
-          <form novalidate="" action="" className="space-y-12">
+          <form onSubmit={handleLogin} className="space-y-12">
             <div className="space-y-4">
 				{/* email field  */}
               <div>
-                <label for="email" className="block mb-2 text-sm">
+                <p className="block mb-2 text-sm">
                   Email address
-                </label>
+                </p>
                 <input
                   type="email"
                   name="email"
@@ -41,9 +64,9 @@ function Login(props) {
 			  {/* password field  */}
               <div>
                 <div className="flex justify-between mb-2">
-                  <label for="password" className="text-sm">
+                  <p  className="text-sm">
                     Password
-                  </label>
+                  </p>
                   <a
                     rel="noopener noreferrer"
                     href="#"
@@ -63,10 +86,9 @@ function Login(props) {
 					  {/* submit field  */}
             <div className="space-y-2">
               <div>
-                <input
+                <button
                   type="submit"
-				  value='Sign In'
-                  className="w-full bg-[#86C232] text-white px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900" />
+                  className="w-full bg-[#86C232] text-white px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900" >Sign In </button>
               </div>
               <p className="px-6 text-sm  text-center dark:text-gray-400">
                 Don't have an account yet?
@@ -81,6 +103,7 @@ function Login(props) {
           </form>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </>
   );
 }
