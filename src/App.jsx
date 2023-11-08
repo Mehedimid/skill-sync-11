@@ -12,7 +12,9 @@ function App() {
       <Navbar></Navbar>
     </div>
        
-    <Outlet></Outlet>
+   <div className="mx-auto w-11/12">
+   <Outlet></Outlet>
+   </div>
      
      <div className="bg-[#222629]">
       <Footer></Footer>

@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet";
 import titles from "../titles";
+import { Link } from "react-router-dom";
+import login from "../assets/login.svg"
 
 function Login(props) {
   return (
@@ -10,7 +12,10 @@ function Login(props) {
 
 
       <div className="min-h-screen flex justify-center items-center  ">
-        <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-neutral-300 dark:bg-gray-900 dark:text-gray-100">
+		<div className="w-1/2">
+			<img src={login} alt="" />
+		</div>
+        <div className="flex w-1/2 flex-col max-w-md p-6 rounded-md sm:p-10 bg-neutral-300 dark:bg-gray-900 dark:text-gray-100">
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Sign in</h1>
             <p className="text-sm dark:text-gray-400">
@@ -55,22 +60,21 @@ function Login(props) {
                 />
               </div>
             </div>
+					  {/* submit field  */}
             <div className="space-y-2">
               <div>
-                <button
-                  type="button"
-                  className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">
-                  Sign in
-                </button>
+                <input
+                  type="submit"
+				  value='Sign In'
+                  className="w-full bg-[#86C232] text-white px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900" />
               </div>
-              <p className="px-6 text-sm text-center dark:text-gray-400">
+              <p className="px-6 text-sm  text-center dark:text-gray-400">
                 Don't have an account yet?
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:underline dark:text-violet-400">
-                  Sign up
-                </a>
+                <Link
+				 to='/register'
+                  className="hover:underline ml-2 font-bold dark:text-violet-400">
+                 <span className="text-[#86C232]  text-lg"> Sign up</span>
+                </Link>
                 .
               </p>
             </div>

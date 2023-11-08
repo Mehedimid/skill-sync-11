@@ -1,7 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import profile from "../assets/profile.png";
+import profilepng from "../assets/profile.png";
 import logo11 from "../assets/logo11.png";
+import profilesvg from "../assets/profile.svg";
 import { useState } from "react";
+
 function Navbar(props) {
   const [user, setUser] = useState(false);
 
@@ -37,7 +39,7 @@ function Navbar(props) {
           </div>
 
           {/*only for mobile start  */}
-          <div className="dropdown lg:hidden">
+          <div className="dropdown md:hidden">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +81,7 @@ function Navbar(props) {
         </div>
 
         <div className="navbar-end ">
-          <ul className="hidden lg:flex gap-4 justify-center items-center border-r-2 mr-6 border-gray-400">
+          <ul className="hidden md:flex gap-4 justify-center items-center border-r-2 mr-6 border-gray-400">
             <li>
               <NavLink to="/">Home </NavLink>
             </li>
@@ -101,7 +103,10 @@ function Navbar(props) {
             {user ? (
               <div className="flex justify-center items-center gap-1 text-white">
                 <h2>Mehedi Hasan</h2>
-                <img src={profile} className="h-12 w-12 rounded-full" />
+                <img
+                  src={profilesvg}
+                  className="h-12 w-12 rounded-full bg-white"
+                />
               </div>
             ) : (
               <NavLink to="/login" className="text-[#86C232] ">

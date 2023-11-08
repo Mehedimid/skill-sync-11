@@ -6,7 +6,7 @@ import titles from "../titles";
 function Home(props) {
   return (
     <>
-          <Helmet>
+      <Helmet>
         <title>{titles.home}</title>
       </Helmet>
       <main>
