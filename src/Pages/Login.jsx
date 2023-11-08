@@ -58,7 +58,7 @@ function Login(props) {
             <form>
               <div className="mb-4">
                 <label
-                  for="hs-hero-name-2"
+      
                   className="block text-sm font-medium dark:text-white">
                   <span className="sr-only">Full name</span>
                 </label>
@@ -72,7 +72,7 @@ function Login(props) {
 
               <div className="mb-4">
                 <label
-                  for="hs-hero-email-2"
+       
                   className="block text-sm font-medium dark:text-white">
                   <span className="sr-only">Email address</span>
                 </label>
@@ -86,7 +86,7 @@ function Login(props) {
 
               <div className="mb-4">
                 <label
-                  for="hs-hero-password-2"
+    
                   className="block text-sm font-medium dark:text-white">
                   <span className="sr-only">Password</span>
                 </label>
@@ -99,11 +99,11 @@ function Login(props) {
               </div>
 
               <div className="grid">
-                <button
+                <Link
                   type="submit"
                   className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                   Sign up
-                </button>
+                </Link>
               </div>
             </form>
             {/* <!-- End Form --> */}
