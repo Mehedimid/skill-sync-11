@@ -84,7 +84,7 @@ const handleDelete = (id) => {
           </div>
           <div className='flex gap-20'>
             <button onClick={()=>handleDelete(_id)} className='btn btn-error uppercase'>delete</button>
-            <Link to='/update' className='btn btn-accent uppercase'>update</Link>
+            <Link to={`/update/${_id}`} className='btn btn-accent uppercase'>update</Link>
           </div>
         </div>
       </>

@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../titles";
 import { authContext } from "../AuthProvider";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Update(props) {
+    const navigate = useNavigate()
     const {user} = useContext(authContext)
+    const {id} = useParams()
 const handleUpdate = e => {
     e.preventDefault()
   const form = e.target
@@ -18,6 +22,28 @@ const handleUpdate = e => {
   const providerImg = form.providerPhoto.value
   const addService = {serviceName, description, serviceProvider, providerEmail, price, image, location , providerImg}
   console.log(addService)
+
+  fetch(`http://localhost:5000/services/${id}`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(addService),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.modifiedCount > 0) {
+                Swal.fire({
+                  title: "Success!",
+                  text: "product Updated successfully!!!",
+                  icon: "success",
+                  confirmButtonText: "Cool",
+                });
+              }
+              navigate('/my-services')
+            });
+    
 
 }
 
