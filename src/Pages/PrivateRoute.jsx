@@ -8,7 +8,8 @@ function PrivateRoute({children}) {
 
     if(loading){
       return <h1 className='text-5xl font-bold text-center my-52'>
-        Loading... <span className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></span>
+        Loading... 
+        <span className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></span>
       <span className="loading  loading-spinner text-primary"></span> <br /><br />
       </h1>
    }  

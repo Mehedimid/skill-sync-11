@@ -47,7 +47,7 @@ function Navbar(props) {
           </div>
 
           {/*only for mobile start  */}
-          <div className="dropdown md:hidden">
+          <div className="dropdown md:hidden ml-4">
             <p tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

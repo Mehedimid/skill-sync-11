@@ -4,17 +4,17 @@
     "description": "Learn to repair common electronic devices such as smartphones, laptops, and game consoles.",
     "serviceProvider": "John Smith",
     "providerEmail": "john.smith@serviceprovider1.com",
-    "price": "$50 per session",
+    "price": 50 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNON0EUYfJUm-PnyuicCZN3SOmGcxM0FC9Rg&usqp=CAU",
     "location": "Gulshan, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3hVSdOZmmnsHUFX-9ewsywEiEng-nDTJxYQ&usqp=CAU"
   },
   {
     "serviceName": "Bicycle Maintenance Clinic",
-    "description": "Get hands-on experience in fixing and maintaining bicycles, from flat tires to brake adjustments.",
+    "description": "Get hands- exin fixing and maintaining bicycles, from flat tires to brake adjustments.",
     "serviceProvider": "Sarah Johnson",
     "providerEmail": "sarah.johnson@serviceprovider2.com",
-    "price": "$30 per workshop",
+    "price": 30 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ubuoWYjt0JRRuMRjntuV2wuVVzozkngBDw&usqp=CAU",
     "location": "Banani, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcgXtx-sWkH5UjMJdwaJ7wlrZxnjE4zYtN3g&usqp=CAU"
@@ -24,7 +24,7 @@
     "description": "Learn essential plumbing skills, like fixing leaks, unclogging drains, and replacing fixtures.",
     "serviceProvider": "Michael Davis",
     "providerEmail": "michael.davis@serviceprovider3.com",
-    "price": "$40 per class",
+    "price": 40 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWZgSjCxJzZQJijMitoMkD8fuvqJjZITp09UWrkHXQQ&s",
     "location": "Dhanmondi, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSixq89MuE5LjBTEMmjFzFCt8wWpmqE9A8k-Q&usqp=CAU"
@@ -34,7 +34,7 @@
     "description": "Master the basics of woodworking, including measuring, cutting, and joining wood.",
     "serviceProvider": "Emily Turner",
     "providerEmail": "emily.turner@serviceprovider4.com",
-    "price": "$60 per workshop",
+    "price": 60 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmEfuh8Bozl46wXLOTcQ60njEAUwJT9NSWcbKXPhXeUQ&s",
     "location": "Mirpur, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcdTcFG2FK7TYwF5mCcTKSj49hj_O2M1T2Fg&usqp=CAU"
@@ -44,7 +44,7 @@
     "description": "Understand basic car maintenance, including oil changes, tire rotation, and brake checks.",
     "serviceProvider": "Robert Wilson",
     "providerEmail": "robert.wilson@serviceprovider5.com",
-    "price": "$70 per session",
+    "price": 70 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk7Kteg6pduqjxJX5EFcbs2PguOozd-eJW3T3ZkyJLqQ&s",
     "location": "Gulistan, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8BSK_NiCWRL5QAIvnuab7I8bRhpg0BWxs7w&usqp=CAU"
@@ -54,7 +54,7 @@
     "description": "Learn how to mend clothes, sew patches, and handle basic sewing projects.",
     "serviceProvider": "Maria Rodriguez",
     "providerEmail": "maria.rodriguez@serviceprovider6.com",
-    "price": "$25 per workshop",
+    "price": 25 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTohkWGyNXVemfQ7SD2ApaU9ahE0WEk6cU7gA&usqp=CAU",
     "location": "Uttara, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvf0wID9PmCGdUZYqJmShZdOoUXdwtYsYWyw&usqp=CAU"
@@ -64,7 +64,7 @@
     "description": "Fix common household appliances like toasters, blenders, and coffee makers.",
     "serviceProvider": "Chris Anderson",
     "providerEmail": "chris.anderson@serviceprovider7.com",
-    "price": "$35 per class",
+    "price": 35 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6H_pysjgdZ-sB6kfZehSGdIJiPMVyvswVdQ&usqp=CAU",
     "location": "Motijheel, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8PWfk7BP9dM3SgOTRw85nGAD0sUb2H-03yw&usqp=CAU"
@@ -74,7 +74,7 @@
     "description": "Explore various painting techniques and color coordination for your DIY projects.",
     "serviceProvider": "Laura Martinez",
     "providerEmail": "laura.martinez@serviceprovider8.com",
-    "price": "$50 per workshop",
+    "price": 50 ,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qd5zyA1UkiqzbU_VvaccmjDfdk0NVlnWUQ&usqp=CAU",
     "location": "Savar, Dhaka",
     "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qd5zyA1UkiqzbU_VvaccmjDfdk0NVlnWUQ&usqp=CAU"
