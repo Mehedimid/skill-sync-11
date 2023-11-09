@@ -31,7 +31,7 @@ function Bookings(props) {
         <div className="flex gap-6 justify-center flex-wrap">
           {bookings?.length
             ? bookings?.map((item) => (
-                <div className="bg-white">
+                <div key={item._id} className="bg-white">
                   <div className=" items-center  space-x-4">
                     <div className="ml-2">
                       <span className="font-bold">{item.serviceProvider}</span>
@@ -51,7 +51,7 @@ function Bookings(props) {
                   </div>
                 </div>
               ))
-            : ""}
+            :  <p className="text-center text-2xl text-red-500 font-bold my-10">No Bookings</p>}
         </div>
       </section>
     </>
