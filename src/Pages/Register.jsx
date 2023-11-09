@@ -2,16 +2,31 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../titles";
 import { Link } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../AuthProvider";
-import { updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
+import { FcGoogle } from 'react-icons/fc';
 import auth from "../firebase/firebase.config";
 
-function Register(props) {
-  
-  const {createUser } = useContext(authContext)
+function Register() {
+  const { createUser } = useContext(authContext);
+  const provider = new GoogleAuthProvider()
 
+    //====== Log in with google =====
+    const googleHandler = () =>{
+      signInWithPopup(auth, provider)
+      .then(result => {
+        toast.success('wow!!! Successfully Registered!!')
+      })
+      .catch(error =>{
+        toast.error(error.message)
+        console.error(error.message)
+      })
+    }
+
+
+    //=== create user with email and pass ===
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,39 +36,34 @@ function Register(props) {
     const password = form.password.value;
     // console.log(photo, username, email, password);
 
-      // condition
-      const uppercase = /[A-Z]/.test(password);
-      const hasSpecialCharacter = /[!@#$%^&*]/.test(password);
-      if (password.length < 6) {
-        toast.error("error: password must be 8 character");
-        return;
-      } else if (!uppercase) {
-        toast.error("error: password need uppercase");
-        return;
-      } else if (!hasSpecialCharacter) {
-        toast.error("error : no special charachter");
-        return;
-      }
+    // condition
+    const uppercase = /[A-Z]/.test(password);
+    const hasSpecialCharacter = /[!@#$%^&*]/.test(password);
+    if (password.length < 6) {
+      toast.error("error: password must be 8 character");
+      return;
+    } else if (!uppercase) {
+      toast.error("error: password need uppercase");
+      return;
+    } else if (!hasSpecialCharacter) {
+      toast.error("error : no special charachter");
+      return;
+    }
 
-  //  create user ===
-  createUser(email, password)
-  .then((res) => {
-    const currentUser = res.user
-    toast.success('wow!!! Successfully Registered!!')
-      // update user profile 
-  updateProfile( currentUser, {
-    displayName:username, 
-    photoURL: photo,
-  })
-  .then(()=> console.log('profile updated'))
-  .catch(error => console.log(error.message))
-    // navigate('/')
-  })
-  .catch((error) => toast.error(error.message));
-
-
-
-
+    //  create user ===
+    createUser(email, password)
+      .then((res) => {
+        const currentUser = res.user;
+        toast.success("wow!!! Successfully Registered!!");
+        // update user profile
+        updateProfile(currentUser, {
+          displayName: username,
+          photoURL: photo,
+        })
+          .then(() => console.log("profile updated"))
+          .catch((error) => console.log(error.message));
+      })
+      .catch((error) => toast.error(error.message));
   };
 
   return (
@@ -63,6 +73,17 @@ function Register(props) {
       </Helmet>
 
       <div className="my-10">
+
+      <h1 className="text-3xl font-bold my-6 text-center text-black">
+        Register Your Account
+      </h1>
+
+      <div className="my-5 flex justify-center">
+        <button onClick={googleHandler} className="btn btn-ghost  btn-outline  w-3/12 ">
+        <span className="text-2xl"> <FcGoogle/></span> Login with Google
+        </button>
+      </div>
+
         <div className="flex  items-center mb-5 justify-center text-center dark:bg-gray-900 dark:text-gray-100">
           <form
             onSubmit={handleRegister}
@@ -106,8 +127,9 @@ function Register(props) {
             {/* sign up  */}
             <button
               type="submit"
-              className="flex bg-slate-300  items-center justify-center h-12 px-6 mt-8 text-sm font-semibold rounded-lg dark:bg-violet-400 dark:text-gray-900"
-            >Sign Up</button>
+              className="flex bg-slate-300  items-center justify-center h-12 px-6 mt-8 text-sm font-semibold rounded-lg dark:bg-violet-400 dark:text-gray-900">
+              Sign Up
+            </button>
 
             <p className="px-6 text-sm mt-5 text-center dark:text-gray-400">
               Already have an account?

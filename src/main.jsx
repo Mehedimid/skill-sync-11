@@ -15,6 +15,7 @@ import AddServices from './Pages/Dashboard/AddServices.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AuthProvider from './AuthProvider.jsx';
+import PrivateRoute from './Pages/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/all-services',
-        element:<Services></Services>
+        element:<PrivateRoute><Services></Services></PrivateRoute>
       },
       {
         path:'/my-services',
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/add-services',
-        element:<AddServices></AddServices>
+        element:<PrivateRoute><AddServices></AddServices></PrivateRoute>
       },
       {
         path:'/register',

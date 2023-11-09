@@ -116,7 +116,7 @@ function Navbar(props) {
                   }
                 </h2>
                 <img
-                  src={user?.photoURL ? user.photoURL : profilesvg}
+                  src={user?.photoURL }
                   className="h-12 w-12 rounded-full bg-white"
                 />
                 <button className="text-[#86C232] object-cover" onClick={handleLogout}>Log out</button>

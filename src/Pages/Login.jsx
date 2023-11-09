@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import titles from "../titles";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../assets/login.svg"
 import { useContext } from "react";
 import { authContext } from "../AuthProvider";
@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 function Login(props) {
   const {logInUser} = useContext(authContext)
   const navigate = useNavigate()
+  const location = useLocation().state?.path ;
 
   const handleLogin = e => {
     e.preventDefault();
@@ -20,7 +21,7 @@ function Login(props) {
     logInUser(email, password) 
     .then(res => {
       // console.log(res.user)
-      navigate( '/')
+      navigate(location || '/')
     })
     .catch(error => {
       toast.error(error.message)
