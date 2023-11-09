@@ -16,6 +16,7 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AuthProvider from './AuthProvider.jsx';
 import PrivateRoute from './Pages/PrivateRoute.jsx';
+import SingleService from './Components/SingleService.jsx';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/details/:id',
+        element:<SingleService></SingleService>
       }
       
     ]

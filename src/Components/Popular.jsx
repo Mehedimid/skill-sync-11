@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Popular(props) {
   const [services, setServices] = useState([]);
@@ -52,10 +53,10 @@ function Popular(props) {
           </p>
         </div>
         <div className="flex flex-wrap items-center  gap-10 ">
-          <button className="btn bg-[#86C232] hover:btn-ghost">View Details</button>
+          <Link to={`/details/${service._id}`} className="btn bg-[#86C232] hover:btn-ghost">View Details</Link>
           <span className="bg-purple-950 px-3 py-2 rounded text-white ">Price: {service.price} $</span>
         </div>
-              </div>
+        </div>
        
           ))
         : ""}
