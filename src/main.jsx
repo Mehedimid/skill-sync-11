@@ -51,12 +51,12 @@ const router = createBrowserRouter([
       },
       {
         path:'/my-bookings',
-        element:<Bookings></Bookings>,
+        element:<PrivateRoute><Bookings></Bookings></PrivateRoute>,
   
       },
       {
        path:'/pending-works',
-       element:<Pending></Pending>
+       element:<PrivateRoute><Pending></Pending></PrivateRoute>
       },
       {
         path:'/add-services',
