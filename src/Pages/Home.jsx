@@ -2,6 +2,9 @@ import React from "react";
 import Header from "../Components/Header";
 import { Helmet } from "react-helmet";
 import titles from "../titles";
+import ExtraSection1 from "../Components/extra sections/ExtraSection1";
+import ExtraSection2 from "../Components/extra sections/ExtraSection2";
+import ExtraSection3 from "../Components/extra sections/ExtraSection3";
 
 function Home(props) {
   return (
@@ -9,7 +12,7 @@ function Home(props) {
       <Helmet>
         <title>{titles.home}</title>
       </Helmet>
-      <main>
+      <main className="space-y-20">
         <Header></Header>
         <div className="flex sizing flex-col bg-white border shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
           <img
@@ -32,6 +35,18 @@ function Home(props) {
             </a>
           </div>
         </div>
+        
+         <section className="bg-neutral-200">
+          <ExtraSection1></ExtraSection1>
+         </section>
+
+         <section className=" bg-[#86C232] bg-opacity-20">
+          <ExtraSection2></ExtraSection2>
+         </section>
+
+         <section>
+          <ExtraSection3></ExtraSection3>
+         </section>
       </main>
     </>
   );

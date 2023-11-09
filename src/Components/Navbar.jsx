@@ -89,23 +89,25 @@ function Navbar(props) {
         </div>
 
         <div className="navbar-end ">
-          <ul className="hidden md:flex gap-4 justify-center items-center border-r-2 mr-6 border-gray-400">
-            <li>
+          <ul className="hidden md:flex  justify-center items-center border-r-2 mr-6 border-gray-400">
+            <li className="mr-2">
               <NavLink to="/">Home </NavLink>
             </li>
-            <li>
+            <li className="mr-2">
               <NavLink to="/all-services">Services </NavLink>
             </li>
-            <li className="dropdown dropdown-hover">
-              <p tabIndex={0} className=" m-1">
-                Dashboard
-              </p>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                {navlinks2}
-              </ul>
-            </li>
+            {user && 
+            <li className="dropdown dropdown-hover mr-2">
+            <p tabIndex={0} className=" m-1">
+              Dashboard
+            </p>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              {navlinks2}
+            </ul>
+          </li>
+            }
           </ul>
           <div>
             {user ? (

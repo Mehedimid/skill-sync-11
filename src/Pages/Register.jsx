@@ -11,19 +11,18 @@ import auth from "../firebase/firebase.config";
 
 function Register() {
   const { createUser } = useContext(authContext);
-  const provider = new GoogleAuthProvider()
 
     //====== Log in with google =====
-    const googleHandler = () =>{
-      signInWithPopup(auth, provider)
-      .then(result => {
-        toast.success('wow!!! Successfully Registered!!')
-      })
-      .catch(error =>{
-        toast.error(error.message)
-        console.error(error.message)
-      })
-    }
+    // const googleHandler = () =>{
+    //   signInWithPopup(auth, provider)
+    //   .then(result => {
+    //     toast.success('wow!!! Successfully Registered!!')
+    //   })
+    //   .catch(error =>{
+    //     toast.error(error.message)
+    //     console.error(error.message)
+    //   })
+    // }
 
 
     //=== create user with email and pass ===
@@ -77,12 +76,6 @@ function Register() {
       <h1 className="text-3xl font-bold my-6 text-center text-black">
         Register Your Account
       </h1>
-
-      <div className="my-5 flex justify-center">
-        <button onClick={googleHandler} className="btn btn-ghost  btn-outline  w-3/12 ">
-        <span className="text-2xl"> <FcGoogle/></span> Login with Google
-        </button>
-      </div>
 
         <div className="flex  items-center mb-5 justify-center text-center dark:bg-gray-900 dark:text-gray-100">
           <form

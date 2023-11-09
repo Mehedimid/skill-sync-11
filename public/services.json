@@ -1,84 +1,82 @@
- [
-      {
-        "serviceType": "Electronic",
-        "serviceTitle": "Smartphone and Laptop Repair Specialist",
-        "description": "Are you tired of dealing with electronic devices that seem to break down just when you need them the most? Whether it's a cracked smartphone screen or a malfunctioning laptop, we're here to help you become your own tech wizard. In this comprehensive electronics repair workshop, you'll embark on a journey to unlock the secrets of your favorite gadgets.\n\nDiscover the inner workings of smartphones, laptops, and game consoles. Our expert, John Smith, with years of experience in the field, will guide you through the intricate processes of diagnosing and fixing common electronic issues. You'll learn to replace screens, troubleshoot software problems, and even upgrade your devices for optimal performance. By the end of the workshop, you'll have the confidence to tackle electronic repairs with ease, saving both time and money on costly repairs. Join us and become the go-to tech guru among your friends and family!",
-        "serviceProvider": "John Smith",
-        "serviceProviderEmail": "john.smith@serviceprovider1.com",
-        "price": "$50 per session",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNON0EUYfJUm-PnyuicCZN3SOmGcxM0FC9Rg&usqp=CAU",
-        "location": "Gulshan, Dhaka"
-      },
-      {
-        "serviceType": "Bicycle Maintenance",
-        "serviceTitle": "Bike Repair and Maintenance Expert",
-        "description": "Cycling enthusiasts, rejoice! If you've ever found yourself stuck with a flat tire or a squeaky brake, this Bicycle Maintenance Clinic is tailor-made for you. Sarah Johnson, an experienced bike mechanic, is here to empower you with the skills needed to keep your bike in tip-top shape.\n\nIn this hands-on workshop, you'll delve into the world of bicycle repair and maintenance. Sarah will walk you through the fundamentals of fixing common issues such as punctured tires, misaligned brakes, and chain adjustments. You'll gain the knowledge and confidence to perform basic bike repairs and maintenance tasks independently. No more expensive trips to the bike shop – you'll be your bike's personal mechanic! Join us in Banani, Dhaka, and get ready to pedal smoothly and confidently on your two-wheeled companion. Don't miss this opportunity to become a bike repair expert.",
-        "serviceProvider": "Sarah Johnson",
-        "serviceProviderEmail": "sarah.johnson@serviceprovider2.com",
-        "price": "$30 per workshop",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ubuoWYjt0JRRuMRjntuV2wuVVzozkngBDw&usqp=CAU",
-        "location": "Banani, Dhaka"
-      },
-      {
-        "serviceType": "Plumbing",
-        "serviceTitle": "Plumbing Skills Instructor",
-        "description": "Dripping faucets, clogged drains, and running toilets – these common plumbing issues can quickly turn into major headaches. At our DIY Home Plumbing workshop, we provide you with the knowledge and skills to handle these problems with confidence. Led by plumbing expert Michael Davis, this workshop is your gateway to plumbing proficiency.\n\nIn this comprehensive class, you'll learn the essentials of plumbing repair and maintenance. Michael will guide you through diagnosing common plumbing problems, such as leaky pipes, drain blockages, and faulty fixtures. You'll gain hands-on experience in fixing these issues and preventing future plumbing mishaps. By the end of the workshop, you'll be well-prepared to tackle various plumbing tasks in your own home or even help out friends and family. Say goodbye to costly plumbing bills and hello to newfound plumbing expertise. Join us in Dhanmondi, Dhaka, and embark on your plumbing journey!",
-        "serviceProvider": "Michael Davis",
-        "serviceProviderEmail": "michael.davis@serviceprovider3.com",
-        "price": "$40 per class",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWZgSjCxJzZQJijMitoMkD8fuvqJjZITp09UWrkHXQQ&s",
-        "location": "Dhanmondi, Dhaka"
-      },
-      {
-        "serviceType": "Woodworking",
-        "serviceTitle": "Woodworking Instructor",
-        "description": "Unleash your inner carpenter and embark on a journey of creativity and craftsmanship at our Woodworking and Carpentry Basics workshop. Whether you're a complete novice or have some experience with woodworking, our expert instructor Emily Turner will guide you through the art of working with wood.\n\nIn this hands-on workshop, you'll learn essential woodworking skills, from measuring and cutting to joining wood pieces seamlessly. Emily will introduce you to various tools and techniques, enabling you to create your own wooden masterpieces. From crafting a personalized wooden shelf to building a sturdy coffee table, you'll gain the confidence to tackle DIY woodworking projects with ease. Join us in Mirpur, Dhaka, and let your creativity flow through the grains of wood!",
-        "serviceProvider": "Emily Turner",
-        "serviceProviderEmail": "emily.turner@serviceprovider4.com",
-        "price": "$60 per workshop",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmEfuh8Bozl46wXLOTcQ60njEAUwJT9NSWcbKXPhXeUQ&s",
-        "location": "Mirpur, Dhaka"
-      },
-      {
-        "serviceType": "Auto Maintenance",
-        "serviceTitle": "Auto Maintenance Instructor",
-        "description": "Do you find yourself puzzled when it comes to car maintenance? Fear not! Our Auto Maintenance 101 workshop is designed to empower you with the knowledge and skills needed to keep your vehicle running smoothly. Led by experienced mechanic Robert Wilson, this workshop covers the essentials of auto maintenance.\n\nYou'll learn the art of basic car maintenance, including oil changes, tire rotation, and brake checks. Robert will demystify the workings of your car and provide practical tips to keep it in top shape. Say goodbye to costly trips to the auto repair shop and hello to a more informed and confident car owner. Join us in Gulistan, Dhaka, and get ready to take control of your car's maintenance needs.",
-        "serviceProvider": "Robert Wilson",
-        "serviceProviderEmail": "robert.wilson@serviceprovider5.com",
-        "price": "$70 per session",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk7Kteg6pduqjxJX5EFcbs2PguOozd-eJW3T3ZkyJLqQ&s",
-        "location": "Gulistan, Dhaka"
-      },
-      {
-        "serviceType": "Sewing and Fabric Repair",
-        "serviceTitle": "Sewing and Fabric Repair Instructor",
-        "description": "Is your favorite pair of jeans in need of repair? Or perhaps you've always wanted to learn how to sew and mend clothes? Look no further than our Sewing Workshop led by Maria Rodriguez, an experienced sewing and fabric repair expert.\n\nIn this hands-on workshop, you'll learn how to mend clothes, sew patches, and handle basic sewing projects. Maria will introduce you to the world of sewing, from threading a needle to using a sewing machine. You'll gain the confidence to tackle sewing and fabric repair tasks independently. Join us in Uttara, Dhaka, and start your journey towards becoming a skilled seamstress or tailor. Don't miss this opportunity to transform your fabric into beautiful creations!",
-        "serviceProvider": "Maria Rodriguez",
-        "serviceProviderEmail": "maria.rodriguez@serviceprovider6.com",
-        "price": "$25 per workshop",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTohkWGyNXVemfQ7SD2ApaU9ahE0WEk6cU7gA&usqp=CAU",
-        "location": "Uttara, Dhaka"
-      },
-      {
-        "serviceType": "Appliance Repair",
-        "serviceTitle": "Household Appliance Repair Specialist",
-        "description": "Have you ever faced the frustration of a malfunctioning household appliance? Say goodbye to those moments of despair with our Small Appliance Repair workshop, where you'll learn to fix common household appliances. Led by appliance expert Chris Anderson, this workshop will empower you with the skills needed to troubleshoot and repair appliances with ease.\n\nYou'll delve into the inner workings of appliances like toasters, blenders, and coffee makers. Chris will guide you through diagnosing common issues, repairing components, and ensuring the safe operation of these appliances. No more costly appliance replacements – you'll be your own household appliance repair specialist. Join us in Motijheel, Dhaka, and take control of your home appliance maintenance.",
-        "serviceProvider": "Chris Anderson",
-        "serviceProviderEmail": "chris.anderson@serviceprovider7.com",
-        "price": "$35 per class",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6H_pysjgdZ-sB6kfZehSGdIJiPMVyvswVdQ&usqp=CAU",
-        "location": "Motijheel, Dhaka"
-      },
-      {
-        "serviceType": "Art and Painting",
-        "serviceTitle": "Painting and DIY Art Instructor",
-        "description": "Unlock your inner artist and explore the world of painting and DIY art at our Home Painting Techniques workshop. Laura Martinez, an experienced art instructor, will guide you through various painting techniques and color coordination for your DIY projects.\n\nYou'll have the opportunity to experiment with different painting styles, including acrylic and watercolor, and learn how to create stunning artworks. Whether you're a beginner or an aspiring artist, this workshop is designed to help you unleash your creative potential. Join us in Savar, Dhaka, and dive into the world of art and painting. Don't miss this chance to express yourself through beautiful, handcrafted artworks.",
-        "serviceProvider": "Laura Martinez",
-        "serviceProviderEmail": "laura.martinez@serviceprovider8.com",
-        "price": "$50 per workshop",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qd5zyA1UkiqzbU_VvaccmjDfdk0NVlnWUQ&usqp=CAU",
-        "location": "Savar, Dhaka"
-      }
-    ]
- 
-  
+[
+  {
+    "serviceName": "Electronics Repair Workshop",
+    "description": "Learn to repair common electronic devices such as smartphones, laptops, and game consoles.",
+    "serviceProvider": "John Smith",
+    "providerEmail": "john.smith@serviceprovider1.com",
+    "price": "$50 per session",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNON0EUYfJUm-PnyuicCZN3SOmGcxM0FC9Rg&usqp=CAU",
+    "location": "Gulshan, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3hVSdOZmmnsHUFX-9ewsywEiEng-nDTJxYQ&usqp=CAU"
+  },
+  {
+    "serviceName": "Bicycle Maintenance Clinic",
+    "description": "Get hands-on experience in fixing and maintaining bicycles, from flat tires to brake adjustments.",
+    "serviceProvider": "Sarah Johnson",
+    "providerEmail": "sarah.johnson@serviceprovider2.com",
+    "price": "$30 per workshop",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ubuoWYjt0JRRuMRjntuV2wuVVzozkngBDw&usqp=CAU",
+    "location": "Banani, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcgXtx-sWkH5UjMJdwaJ7wlrZxnjE4zYtN3g&usqp=CAU"
+  },
+  {
+    "serviceName": "DIY Home Plumbing",
+    "description": "Learn essential plumbing skills, like fixing leaks, unclogging drains, and replacing fixtures.",
+    "serviceProvider": "Michael Davis",
+    "providerEmail": "michael.davis@serviceprovider3.com",
+    "price": "$40 per class",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWZgSjCxJzZQJijMitoMkD8fuvqJjZITp09UWrkHXQQ&s",
+    "location": "Dhanmondi, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSixq89MuE5LjBTEMmjFzFCt8wWpmqE9A8k-Q&usqp=CAU"
+  },
+  {
+    "serviceName": "Woodworking and Carpentry Basics",
+    "description": "Master the basics of woodworking, including measuring, cutting, and joining wood.",
+    "serviceProvider": "Emily Turner",
+    "providerEmail": "emily.turner@serviceprovider4.com",
+    "price": "$60 per workshop",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmEfuh8Bozl46wXLOTcQ60njEAUwJT9NSWcbKXPhXeUQ&s",
+    "location": "Mirpur, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcdTcFG2FK7TYwF5mCcTKSj49hj_O2M1T2Fg&usqp=CAU"
+  },
+  {
+    "serviceName": "Auto Maintenance 101",
+    "description": "Understand basic car maintenance, including oil changes, tire rotation, and brake checks.",
+    "serviceProvider": "Robert Wilson",
+    "providerEmail": "robert.wilson@serviceprovider5.com",
+    "price": "$70 per session",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk7Kteg6pduqjxJX5EFcbs2PguOozd-eJW3T3ZkyJLqQ&s",
+    "location": "Gulistan, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8BSK_NiCWRL5QAIvnuab7I8bRhpg0BWxs7w&usqp=CAU"
+  },
+  {
+    "serviceName": "Sewing Workshop",
+    "description": "Learn how to mend clothes, sew patches, and handle basic sewing projects.",
+    "serviceProvider": "Maria Rodriguez",
+    "providerEmail": "maria.rodriguez@serviceprovider6.com",
+    "price": "$25 per workshop",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTohkWGyNXVemfQ7SD2ApaU9ahE0WEk6cU7gA&usqp=CAU",
+    "location": "Uttara, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvf0wID9PmCGdUZYqJmShZdOoUXdwtYsYWyw&usqp=CAU"
+  },
+  {
+    "serviceName": "Small Appliance Repair",
+    "description": "Fix common household appliances like toasters, blenders, and coffee makers.",
+    "serviceProvider": "Chris Anderson",
+    "providerEmail": "chris.anderson@serviceprovider7.com",
+    "price": "$35 per class",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6H_pysjgdZ-sB6kfZehSGdIJiPMVyvswVdQ&usqp=CAU",
+    "location": "Motijheel, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8PWfk7BP9dM3SgOTRw85nGAD0sUb2H-03yw&usqp=CAU"
+  },
+  {
+    "serviceName": "Home Painting Techniques",
+    "description": "Explore various painting techniques and color coordination for your DIY projects.",
+    "serviceProvider": "Laura Martinez",
+    "providerEmail": "laura.martinez@serviceprovider8.com",
+    "price": "$50 per workshop",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qd5zyA1UkiqzbU_VvaccmjDfdk0NVlnWUQ&usqp=CAU",
+    "location": "Savar, Dhaka",
+    "providerImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qd5zyA1UkiqzbU_VvaccmjDfdk0NVlnWUQ&usqp=CAU"
+  }
+]
