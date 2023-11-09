@@ -1,12 +1,12 @@
 import { Fragment, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
-import ReactModal from "react-modal";
-import Modal from "./Modal";
+
 
 function SingleService(props) {
   const { user } = useContext(authContext);
+  const navigate = useNavigate()
   const [service, setService] = useState({});
   const { id } = useParams();
   useEffect(() => {
@@ -18,6 +18,7 @@ function SingleService(props) {
   }, []);
 
   const {
+    _id,
     serviceName,
     description,
     serviceProvider,
@@ -25,19 +26,9 @@ function SingleService(props) {
     price,
     image,
     location,
-    providerImg,
   } = service;
 
-  const info = {
-    serviceName,
-    description,
-    serviceProvider,
-    price,
-    image,
-    location,
-    providerImg,
-    email: user?.email,
-  };
+
 
   const showModal = () => {
     let element = document.getElementById("modal");
@@ -48,17 +39,18 @@ function SingleService(props) {
     element.classList.add("invisible");
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
     e.preventDefault();
     const form = e.target;
     const serviceName = form.name.value;
-    const description = form.description.value;
+    const userEmail = form.userEmail.value;
     const serviceProvider = form.serviceProvider.value;
     const providerEmail = form.email.value;
     const price = form.price.value;
     const image = form.photo.value;
     const location = form.location.value;
-    const providerImg = form.providerPhoto.value;
+    const date = form.date.value 
+    const instruction = form.instruction.value
     const addService = {
       serviceName,
       description,
@@ -67,7 +59,8 @@ function SingleService(props) {
       price,
       image,
       location,
-      providerImg,
+   
+      date, instruction , userEmail
     };
     console.log(addService);
 
@@ -87,6 +80,7 @@ function SingleService(props) {
             icon: "success",
             confirmButtonText: "Cool",
           });
+         form.reset()
         }
       });
   };
@@ -135,7 +129,7 @@ function SingleService(props) {
                 onSubmit={handleAdd}
                 className="border w-full mx-auto bg-neutral-700 shadow-xl bg-opacity-10 space-y-6  md:px-16 py-5">
                 <h1 className="text-3xl font-bold my-6 text-center text-[#86C232]">
-                  Purchas A Service
+                  Purchas My Service
                 </h1>
                 {/* service name and provider  */}
                 <div className=" md:flex gap-10 ">
@@ -146,6 +140,8 @@ function SingleService(props) {
                     <input
                       required
                       type="text"
+                      disabled
+                      defaultValue={serviceName}
                       placeholder=" service Name"
                       name="name"
                       className="border p-2  w-full border-[#86C232] rounded"
@@ -160,7 +156,7 @@ function SingleService(props) {
                       type="text"
                       disabled
                       placeholder=" Service Provider"
-                      defaultValue={user?.displayName}
+                      defaultValue={serviceProvider}
                       name="serviceProvider"
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
@@ -175,6 +171,8 @@ function SingleService(props) {
                       type="text"
                       placeholder="location"
                       name="location"
+                      defaultValue={location}
+                      disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
@@ -186,6 +184,7 @@ function SingleService(props) {
                       type="text"
                       placeholder="price"
                       name="price"
+                      defaultValue={price} disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
@@ -194,13 +193,14 @@ function SingleService(props) {
                 <div className=" md:flex gap-10 ">
                   <div className="md:w-1/2">
                     <h2 className="text-lg mb-2 text-slate-700">
-                      Description:
+                      user email:
                     </h2>
                     <input
                       required
                       type="text"
-                      placeholder=" description"
-                      name="description"
+                      placeholder=" user email"
+                      name="userEmail"
+                      defaultValue={user?.email} disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
@@ -211,42 +211,32 @@ function SingleService(props) {
                       type="email"
                       placeholder="email"
                       disabled
-                      defaultValue={user?.email}
+                      defaultValue={providerEmail}
                       name="email"
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
                 </div>
-                {/* photo url and provider photo url*/}
+                {/* photo url */}
                 <div className=" md:flex gap-10 ">
-                  <div className="w-1/2">
+                  <div className="w-full">
                     <h2 className="text-lg mb-2 text-slate-700">Photo:</h2>
                     <input
                       required
                       type="text"
                       placeholder="type photo url"
                       name="photo"
+                      defaultValue={image} disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
-                  <div className="w-1/2">
-                    <h2 className="text-lg mb-2 text-slate-700">
-                      provider image:
-                    </h2>
-                    <input
-                      required
-                      type="text"
-                      placeholder="type photo url"
-                      name="providerPhoto"
-                      className="border p-2  w-full border-[#86C232] rounded"
-                    />
-                  </div>
+
                 </div>
 
                 {/*date and instruction*/}
                 <div className=" md:flex gap-10 ">
                   <div className="w-1/2">
-                    <h2 className="text-lg mb-2 text-slate-700">Photo:</h2>
+                    <h2 className="text-lg mb-2 text-slate-700">Instruction:</h2>
                     <input
                       required
                       type="text"
@@ -257,13 +247,13 @@ function SingleService(props) {
                   </div>
                   <div className="w-1/2">
                     <h2 className="text-lg mb-2 text-slate-700">
-                      provider image:
+                      date:
                     </h2>
                     <input
                       required
-                      type="text"
-                      placeholder="type photo url"
-                      name="providerPhoto"
+                      type='date'
+                     
+                      name="date"
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
