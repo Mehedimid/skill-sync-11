@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 function EveryService({ service }) {
 
@@ -7,6 +8,7 @@ function EveryService({ service }) {
     description,
     serviceProvider,
     providerEmail,
+    _id,
     price,
     image,
     location,
@@ -35,7 +37,7 @@ function EveryService({ service }) {
         <div>
           <img
             src={image}
-            className="object-cover w-full mb-4  sm:h-96 dark:bg-gray-500"
+            className="object-cover w-full mb-4  h-72 dark:bg-gray-500"
           />
           <h2 className="mb-1 text-xl font-semibold">
            {serviceName}
@@ -46,7 +48,7 @@ function EveryService({ service }) {
           <p className="font-semibold">{location}</p>
         </div>
         <div className="flex flex-wrap items-center  gap-10 ">
-          <button className="btn bg-[#86C232] hover:btn-ghost">View Details</button>
+          <Link to={`/details/${_id}`} className="btn bg-[#86C232] hover:btn-ghost">View Details</Link>
           <span className="bg-purple-950 px-3 py-2 rounded text-white ">Price: {price} $</span>
         </div>
       </div>

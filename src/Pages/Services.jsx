@@ -1,16 +1,31 @@
 import { Helmet } from "react-helmet";
 import titles from "../titles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import EveryService from "../Components/EveryService";
+import { useLoaderData } from "react-router-dom";
 
 function Services(props) {
-   const [services, setServices] = useState([])
-   useEffect(()=> {
-    fetch('http://localhost:5000/services')
-    .then(res=>res.json())
-    .then(data=>setServices(data))
-   } ,[])
+  const searchRef = useRef()
+   const loadedData = useLoaderData()
+  //  console.log(loadedData)
+   const [services, setServices] = useState(loadedData)
+
+  //  useEffect(()=> {
+  //   fetch('http://localhost:5000/services')
+  //   .then(res=>res.json())
+  //   .then(data=>setServices(data))
+  //  } ,[])
      
+   const handleSubmit = () => {
+
+    const searchValue = searchRef?.current?.value.toLowerCase(); 
+    console.log(searchValue)
+    const filterData = loadedData.filter(item => item.serviceName.toLowerCase().includes(searchValue))
+    console.log(filterData)
+    if(filterData){
+      setServices(filterData)
+    }
+   }
 
   return (
     <div className="my-10">
@@ -18,8 +33,14 @@ function Services(props) {
         <title>{titles.services}</title>
       </Helmet>
 
-       <h1 className="text-4xl font-bold text-center my-10">Our All Services</h1>      
-      <div className="grid grid-cols-1 gap-5  lg:grid-cols-2 sizing">
+       <h1 className="text-4xl font-bold text-center my-10">Our All Services</h1> 
+
+       <div className="relative mb-6 md:w-1/2 mx-auto">
+       <input ref={searchRef} type="text" placeholder="Search here..." className="input input-bordered text-black w-full pr-16" /> 
+        <button onClick={handleSubmit} className="btn btn-error absolute text-white top-0 right-0 rounded-l-none">Search</button>
+      </div>     
+
+      <div className="md:w-2/3 space-y-12 mx-auto sizing">
         {
             services?.length>0 ? services?.map(service=> <EveryService  key={service._id} service={service} ></EveryService>) 
             : ''
