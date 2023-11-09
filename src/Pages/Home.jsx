@@ -14,7 +14,7 @@ function Home(props) {
       <Helmet>
         <title>{titles.home}</title>
       </Helmet>
-
+      
       <Header></Header>
       <main className="space-y-24 sizing my-24">
         <section className="bg-[#86C232] bg-opacity-20 py-6 rounded-xl">

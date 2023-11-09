@@ -7,7 +7,8 @@ const titles = {
     allServices : 'SK|all-Services',
     mySchedules : 'SK|my-schedules',
     addServices:'SK|add-services',
-    register:'SK|Sign-Up'
+    register:'SK|Sign-Up',
+    update:'SK|update'
 }
 
 export default titles;  

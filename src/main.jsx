@@ -17,6 +17,7 @@ import Register from './Pages/Register.jsx';
 import AuthProvider from './AuthProvider.jsx';
 import PrivateRoute from './Pages/PrivateRoute.jsx';
 import SingleService from './Components/SingleService.jsx';
+import Update from './Components/Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,12 @@ const router = createBrowserRouter([
       {
         path:'/my-services',
         element:<MyServices></MyServices>,
+        loader:()=>fetch('http://localhost:5000/services')
 
+      },
+      {
+        path:'/update',
+        element:<Update></Update>
       },
       {
         path:'/my-schedules',
