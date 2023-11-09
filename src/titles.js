@@ -8,7 +8,9 @@ const titles = {
     mySchedules : 'SK|my-schedules',
     addServices:'SK|add-services',
     register:'SK|Sign-Up',
-    update:'SK|update'
+    update:'SK|update',
+    bookings:'SK|Bookings',
+    pending:'SK|pending'
 }
 
 export default titles;  

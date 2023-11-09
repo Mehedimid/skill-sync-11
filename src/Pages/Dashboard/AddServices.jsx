@@ -153,6 +153,7 @@ e.preventDefault()
                 type="text"
                 placeholder="type photo url"
                 name="providerPhoto"
+                defaultValue={user.photoURL} disabled
                 className="border p-2  w-full border-[#86C232] rounded"
               />
             </div>

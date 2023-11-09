@@ -18,13 +18,16 @@ function Navbar(props) {
   const navlinks2 = (
     <>
       <li>
-        <NavLink to="my-services"> My Services </NavLink>{" "}
+        <NavLink to="/my-services"> My Services </NavLink>{" "}
       </li>
       <li>
-        <NavLink to="add-services"> Add Services </NavLink>{" "}
+        <NavLink to="/add-services"> Add Services </NavLink>{" "}
       </li>
       <li>
-        <NavLink to="my-schedules"> My Schedules </NavLink>{" "}
+        <NavLink to={`/my-bookings`}> My Bookings </NavLink>{" "}
+      </li>
+      <li>
+        <NavLink to="/pending-works"> Pending Works </NavLink>{" "}
       </li>
     </>
   );

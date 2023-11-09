@@ -1,5 +1,5 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
+import React from 'react';
 import App from './App.jsx'
 import './index.css'
 import {
@@ -10,7 +10,6 @@ import ErrorPage from './Pages/ErrorPage.jsx';
 import Home from './Pages/Home.jsx';
 import Services from './Pages/Services.jsx';
 import MyServices from './Pages/Dashboard/MyServices.jsx';
-import MySchedules from './Pages/Dashboard/MySchedules.jsx';
 import AddServices from './Pages/Dashboard/AddServices.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
@@ -18,6 +17,8 @@ import AuthProvider from './AuthProvider.jsx';
 import PrivateRoute from './Pages/PrivateRoute.jsx';
 import SingleService from './Components/SingleService.jsx';
 import Update from './Components/Update.jsx';
+import Bookings from './Pages/Bookings.jsx';
+import Pending from './Pages/Dashboard/Pending.jsx';
 
 const router = createBrowserRouter([
   {
@@ -49,8 +50,13 @@ const router = createBrowserRouter([
         element:<Update></Update>
       },
       {
-        path:'/my-schedules',
-        element:<MySchedules></MySchedules>
+        path:'/my-bookings',
+        element:<Bookings></Bookings>,
+  
+      },
+      {
+       path:'/pending-works',
+       element:<Pending></Pending>
       },
       {
         path:'/add-services',
