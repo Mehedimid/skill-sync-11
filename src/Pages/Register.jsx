@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../AuthProvider";
 import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
-import { FcGoogle } from 'react-icons/fc';
 import auth from "../firebase/firebase.config";
 
 function Register() {

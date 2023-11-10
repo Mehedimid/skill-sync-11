@@ -7,6 +7,8 @@ import { authContext } from "../AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { FcGoogle } from 'react-icons/fc';
+
 
 function Login(props) {
   const provider = new GoogleAuthProvider()
@@ -60,7 +62,7 @@ function Login(props) {
 
         <div onClick={googleHandler} className="my-5 flex  justify-center">
         <button className="btn btn-ghost  btn-outline   ">
-        <span className="text-2xl"> </span> Login with Google
+        <span className="text-2xl"> <FcGoogle></FcGoogle></span> Login with Google
         </button>
       </div>
 
