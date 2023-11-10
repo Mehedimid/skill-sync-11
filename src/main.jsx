@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import ErrorPage from './Pages/ErrorPage.jsx';
-import Home from './Pages/Home.jsx';
+import Home from './Pages/Home.jsx';                
 import Services from './Pages/Services.jsx';
 import MyServices from './Pages/Dashboard/MyServices.jsx';
 import AddServices from './Pages/Dashboard/AddServices.jsx';
@@ -37,17 +37,17 @@ const router = createBrowserRouter([
       {
         path:'/all-services',
         element:<Services></Services>,
-        loader:()=>fetch('http://localhost:5000/services')
+        loader:()=>fetch('https://a11-server-rho.vercel.app/services')
       },
       {
         path:'/my-services',
-        element:<MyServices></MyServices>,
-        loader:()=>fetch('http://localhost:5000/services')
+        element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
+        loader:()=>fetch('https://a11-server-rho.vercel.app/services')
 
       },
       {
         path:'/update/:id',
-        element:<Update></Update>
+        element:<PrivateRoute><Update></Update></PrivateRoute>
       },
       {
         path:'/my-bookings',
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        element:<SingleService></SingleService>
+        element:<PrivateRoute><SingleService></SingleService></PrivateRoute>
       }
       
     ]

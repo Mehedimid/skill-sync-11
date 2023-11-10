@@ -7,7 +7,7 @@ function Bookings(props) {
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/cart?email=${user?.email}`)
+    fetch(`https://a11-server-rho.vercel.app/cart?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setBookings(data);

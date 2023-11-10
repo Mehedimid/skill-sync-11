@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Popular(props) {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://a11-server-rho.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

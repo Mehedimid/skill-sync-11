@@ -10,7 +10,7 @@ function SingleService(props) {
   const [service, setService] = useState({});
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${id}`)
+    fetch(`https://a11-server-rho.vercel.app/services/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -64,7 +64,7 @@ function SingleService(props) {
     };
     console.log(addService);
 
-    fetch(`http://localhost:5000/cart`, {
+    fetch(`https://a11-server-rho.vercel.app/cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
