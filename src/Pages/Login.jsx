@@ -52,12 +52,12 @@ function Login(props) {
 
       <div
         className="min-h-screen text-[#86C232]
- flex justify-center items-center  ">
-        <div className="w-1/2">
+ flex flex-col-reverse lg:flex-row  justify-center items-center  ">
+        <div className="hidden md:block lg:w-1/2">
           <img src={login} alt="" />
         </div>
         
-        <div className="flex w-1/2 flex-col max-w-md p-6 rounded-md sm:p-10 bg-neutral-300 dark:bg-gray-900 dark:text-gray-100">
+        <div className="flex md:w-1/2 flex-col max-w-md p-6 rounded-md sm:p-10 bg-neutral-300 dark:bg-gray-900 dark:text-gray-100">
 
 
         <div onClick={googleHandler} className="my-5 flex  justify-center">

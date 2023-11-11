@@ -8,11 +8,13 @@ function App() {
   return (
     <>
 
-    <div className="bg-[#222629] bg-opacity-90 w-full">
+<div>
+<div className="bg-[#222629] bg-opacity-90  top-0 w-full">
       <Navbar></Navbar>
     </div>
+</div>
        
-   <div>
+   <div className="">
    <Outlet></Outlet>
    </div>
      
