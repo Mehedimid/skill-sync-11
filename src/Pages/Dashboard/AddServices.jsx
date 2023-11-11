@@ -22,7 +22,7 @@ e.preventDefault()
   console.log(addService)
 
 
-  fetch('https://a11-server-rho.vercel.app/services',
+  fetch('http://localhost:5000/services',
         {
           method: "POST",
           headers: {

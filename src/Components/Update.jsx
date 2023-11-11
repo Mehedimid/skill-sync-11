@@ -23,7 +23,7 @@ const handleUpdate = e => {
   const addService = {serviceName, description, serviceProvider, providerEmail, price, image, location , providerImg}
   console.log(addService)
 
-  fetch(`https://a11-server-rho.vercel.app/services/${id}`, {
+  fetch(`http://localhost:5000/services/${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

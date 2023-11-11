@@ -37,12 +37,12 @@ const router = createBrowserRouter([
       {
         path:'/all-services',
         element:<Services></Services>,
-        loader:()=>fetch('https://a11-server-rho.vercel.app/services')
+        loader:()=>fetch('http://localhost:5000/services')
       },
       {
         path:'/my-services',
         element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
-        loader:()=>fetch('https://a11-server-rho.vercel.app/services')
+        loader:()=>fetch('http://localhost:5000/services')
 
       },
       {
@@ -68,7 +68,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/details/:id',
-        element:<PrivateRoute><SingleService></SingleService></PrivateRoute>
+        element:<PrivateRoute><SingleService></SingleService></PrivateRoute>,
+        loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
       }
       
     ]

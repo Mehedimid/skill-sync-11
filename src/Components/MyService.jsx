@@ -33,7 +33,7 @@ const handleDelete = (id) => {
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
-    fetch(`https://a11-server-rho.vercel.app/services/${id}`, {
+    fetch(`http://localhost:5000/services/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -11,7 +11,7 @@ function Services(props) {
    const [services, setServices] = useState(loadedData)
 
   //  useEffect(()=> {
-  //   fetch('https://a11-server-rho.vercel.app/services')
+  //   fetch('http://localhost:5000/services')
   //   .then(res=>res.json())
   //   .then(data=>setServices(data))
   //  } ,[])

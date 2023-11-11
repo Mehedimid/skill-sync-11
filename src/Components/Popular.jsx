@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Popular(props) {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("https://a11-server-rho.vercel.app/services")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -24,7 +24,7 @@ function Popular(props) {
     <div className="grid grid-cols-1 gap-16  md:px-36 bg-opacity-0   md:grid-cols-2 ">
       {services?.length > 0
         ? services?.slice(0, 4).map((service) => (
-            <div className="rounded-md shadow-xl shadow-[#86C232] bg-neutral-200 dark:bg-gray-900 dark:text-gray-100">
+            <div key={service._id} className="rounded-md shadow-xl shadow-[#86C232] bg-neutral-200 dark:bg-gray-900 dark:text-gray-100">
               <div className="flex items-center justify-between p-3">
                 <div className="flex items-center space-x-2">
                   <img

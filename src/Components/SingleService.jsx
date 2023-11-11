@@ -1,22 +1,16 @@
 import { Fragment, useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
-
+import EveryService from "./EveryService";
 
 function SingleService(props) {
   const { user } = useContext(authContext);
-  const navigate = useNavigate()
-  const [service, setService] = useState({});
-  const { id } = useParams();
-  useEffect(() => {
-    fetch(`https://a11-server-rho.vercel.app/services/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setService(data);
-      });
-  }, []);
-
+  const navigate = useNavigate();
+  const loadedData = useLoaderData()
+  const {id} = useParams()
+  const [service, setService] = useState(loadedData);
+  const [otherServices, setOther] = useState({})
   const {
     _id,
     serviceName,
@@ -28,6 +22,21 @@ function SingleService(props) {
     location,
   } = service;
 
+
+     useEffect(()=> {
+    fetch(`http://localhost:5000/services?email=${providerEmail}`)
+    .then(res=>res.json())
+    .then(data=>
+    {
+      const filterOtherServices = data?.length && data?.filter(item => item._id !== id) 
+      if(filterOtherServices){
+        setOther(filterOtherServices)
+      }
+    })
+   } ,[])
+
+
+ 
 
 
   const showModal = () => {
@@ -49,8 +58,8 @@ function SingleService(props) {
     const price = form.price.value;
     const image = form.photo.value;
     const location = form.location.value;
-    const date = form.date.value 
-    const instruction = form.instruction.value
+    const date = form.date.value;
+    const instruction = form.instruction.value;
     const addService = {
       serviceName,
       description,
@@ -59,12 +68,14 @@ function SingleService(props) {
       price,
       image,
       location,
-   
-      date, instruction , userEmail
+
+      date,
+      instruction,
+      userEmail,
     };
     console.log(addService);
 
-    fetch(`https://a11-server-rho.vercel.app/cart`, {
+    fetch(`http://localhost:5000/cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +91,7 @@ function SingleService(props) {
             icon: "success",
             confirmButtonText: "Cool",
           });
-         form.reset()
+          form.reset();
         }
       });
   };
@@ -117,6 +128,18 @@ function SingleService(props) {
                   Book Now
                 </button>
               </div>
+            </div>
+          </div>
+          {/*------------------ other user services ----------------- */}
+          <div className="bg-[#86C232] bg-opacity-30 sizing  mb-20  min-h-[300px]">
+            <h1 className="text-center py-6 font-bold text-2xl">
+              My other Services
+            </h1>
+            {/* other service  */}
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-32 gap-4 ">
+                {
+                  otherServices.length ? otherServices.map(service => <EveryService key={service._id} service={service}></EveryService>) : <h1 className='text-red-600  text-2xl font-bold my-20'>You Don't Have Other Service</h1>
+                }
             </div>
           </div>
 
@@ -184,7 +207,8 @@ function SingleService(props) {
                       type="text"
                       placeholder="price"
                       name="price"
-                      defaultValue={price} disabled
+                      defaultValue={price}
+                      disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
@@ -192,15 +216,14 @@ function SingleService(props) {
                 {/* des and email */}
                 <div className=" md:flex gap-10 ">
                   <div className="md:w-1/2">
-                    <h2 className="text-lg mb-2 text-slate-700">
-                      user email:
-                    </h2>
+                    <h2 className="text-lg mb-2 text-slate-700">user email:</h2>
                     <input
                       required
                       type="text"
                       placeholder=" user email"
                       name="userEmail"
-                      defaultValue={user?.email} disabled
+                      defaultValue={user?.email}
+                      disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
@@ -226,17 +249,19 @@ function SingleService(props) {
                       type="text"
                       placeholder="type photo url"
                       name="photo"
-                      defaultValue={image} disabled
+                      defaultValue={image}
+                      disabled
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
                   </div>
-
                 </div>
 
                 {/*date and instruction*/}
                 <div className=" md:flex gap-10 ">
                   <div className="w-1/2">
-                    <h2 className="text-lg mb-2 text-slate-700">Instruction:</h2>
+                    <h2 className="text-lg mb-2 text-slate-700">
+                      Instruction:
+                    </h2>
                     <input
                       required
                       type="text"
@@ -246,13 +271,10 @@ function SingleService(props) {
                     />
                   </div>
                   <div className="w-1/2">
-                    <h2 className="text-lg mb-2 text-slate-700">
-                      date:
-                    </h2>
+                    <h2 className="text-lg mb-2 text-slate-700">date:</h2>
                     <input
                       required
-                      type='date'
-                     
+                      type="date"
                       name="date"
                       className="border p-2  w-full border-[#86C232] rounded"
                     />
