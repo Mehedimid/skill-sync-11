@@ -4,13 +4,15 @@ import titles from '../../titles';
 import { useLoaderData } from 'react-router-dom';
 import { authContext } from "../../AuthProvider"
 import MyService from '../../Components/MyService';
+import axios from 'axios';
 
 
 function MyServices(props) {
     const {user} = useContext(authContext)
     console.log(user)
-    const loadedData = useLoaderData()
-    const [myServices, setMyServices] = useState(loadedData)
+    const [myServices, setMyServices] = useState([])
+    axios.get(('http://localhost:5000/services'))
+    .then(res=>setMyServices(res.data))
 
     return (
         <div className='min-h-screen '>

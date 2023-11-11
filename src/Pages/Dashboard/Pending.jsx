@@ -2,18 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../../titles";
 import { authContext } from "../../AuthProvider";
+import axios from "axios";
 
 function Pending(props) {
     const [pendings, setPending] = useState()
     const {user} = useContext(authContext)
 
-    useEffect(()=>{
-        fetch(`http://localhost:5000/cart/${user?.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setPending(data);
-        });
-    },[])
+useEffect(()=>{
+  
+},[])
+
+useEffect(()=>{
+  axios.get(`http://localhost:5000/cart/${user?.email}`)
+  .then((data) => {
+    setPending(data.data);
+  })
+},[])
+     
+
   return (
     <>
       <div>

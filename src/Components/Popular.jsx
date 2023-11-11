@@ -1,24 +1,15 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Popular(props) {
   const [services, setServices] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
-
-  //   const service = {
-  //     serviceName,
-  //     description,
-  //     serviceProvider,
-  //     providerEmail,
-  //     price,
-  //     image,
-  //     location,
-  //     providerImg,
-  //   }
+     const secureAxios = useAxiosSecure()
+      useEffect(()=>{
+        secureAxios("/services")
+        .then((data) => setServices(data.data));
+      },[])
 
   return (
     <div className="grid grid-cols-1 gap-16  md:px-36 bg-opacity-0   md:grid-cols-2 ">

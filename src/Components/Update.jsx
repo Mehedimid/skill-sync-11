@@ -4,6 +4,7 @@ import titles from "../titles";
 import { authContext } from "../AuthProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function Update(props) {
     const navigate = useNavigate()
@@ -23,17 +24,9 @@ const handleUpdate = e => {
   const addService = {serviceName, description, serviceProvider, providerEmail, price, image, location , providerImg}
   console.log(addService)
 
-  fetch(`http://localhost:5000/services/${id}`, {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(addService),
-          })
-            .then((res) => res.json())
+  axios.put(`http://localhost:5000/services/${id}`, addService)
             .then((data) => {
-              console.log(data);
-              if (data.modifiedCount > 0) {
+              if (data.data.modifiedCount > 0) {
                 Swal.fire({
                   title: "Success!",
                   text: "product Updated successfully!!!",

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import titles from '../../titles';
 import { authContext } from '../../AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 function AddServices(props) {
   const {user} = useContext(authContext)
@@ -22,18 +23,11 @@ e.preventDefault()
   console.log(addService)
 
 
-  fetch('http://localhost:5000/services',
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(addService)
-        })
-        .then(res=>res.json())
+  axios.post('http://localhost:5000/services',
+        addService)
         .then(data=> {
           console.log(data)
-          if(data.insertedId){
+          if(data.data.insertedId){
             Swal.fire({
               title: 'Success!!',
               text: 'Successfully added Your Service!!',

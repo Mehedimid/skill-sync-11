@@ -3,14 +3,21 @@ import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
 import EveryService from "./EveryService";
+import axios from "axios";
 
 function SingleService(props) {
   const { user } = useContext(authContext);
   const navigate = useNavigate();
-  const loadedData = useLoaderData()
-  const {id} = useParams()
-  const [service, setService] = useState(loadedData);
+  const [service, setService] = useState([]);
   const [otherServices, setOther] = useState({})
+  const {id} = useParams()
+
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/services/${id}`)
+  .then(res=>setService(res.data))
+  },[])
+
+
   const {
     _id,
     serviceName,
@@ -23,17 +30,17 @@ function SingleService(props) {
   } = service;
 
 
-     useEffect(()=> {
-    fetch(`http://localhost:5000/services?email=${providerEmail}`)
-    .then(res=>res.json())
-    .then(data=>
+
+    axios.get(`http://localhost:5000/services?email=${providerEmail}`)
+    .then(res=>
     {
-      const filterOtherServices = data?.length && data?.filter(item => item._id !== id) 
+      const filterOtherServices = res.data?.length && res.data?.filter(item => item._id !== id) 
       if(filterOtherServices){
         setOther(filterOtherServices)
       }
     })
-   } ,[])
+
+
 
 
  
@@ -68,23 +75,15 @@ function SingleService(props) {
       price,
       image,
       location,
-
       date,
       instruction,
       userEmail,
     };
     console.log(addService);
 
-    fetch(`http://localhost:5000/cart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(addService),
-    })
-      .then((res) => res.json())
+    axios.post(`http://localhost:5000/cart`, addService)
       .then((data) => {
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           Swal.fire({
             title: "Success!!",
             text: "Successfully added to cart!!",

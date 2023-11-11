@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 function MyService({service, setMyServices , myServices}) {
    
@@ -33,12 +34,9 @@ const handleDelete = (id) => {
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
-    fetch(`http://localhost:5000/services/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
+    axios.delete(`http://localhost:5000/services/${id}`)
       .then((data) => {
-        if (data.deletedCount > 0) {
+        if (data.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
           const remain = myServices.filter((card) => card._id !== id);
           setMyServices(remain);

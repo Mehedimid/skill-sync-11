@@ -2,17 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../titles";
 import { authContext } from "../AuthProvider";
+import axios from "axios";
 
 function Bookings(props) {
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
-  useEffect(() => {
-    fetch(`http://localhost:5000/cart?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBookings(data);
-      });
-  }, []);
+
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/cart?email=${user?.email}`)
+    .then((data) => {
+      setBookings(data.data);
+    });
+  },[])
+
+
 
   if (!bookings) {
     return <p>no booking</p>;
