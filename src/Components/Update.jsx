@@ -1,16 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../titles";
 import { authContext } from "../AuthProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Update(props) {
+    const [service, setService] = useState()
     const navigate = useNavigate()
     const {user} = useContext(authContext)
     const {id} = useParams()
+    const axiosSecure = useAxiosSecure()
+
+   useEffect(()=> {
+    axiosSecure.get(`/services/${id}`)
+    .then(res=>setService(res.data))
+   },[])
+
 const handleUpdate = e => {
     e.preventDefault()
   const form = e.target
@@ -63,6 +70,7 @@ const handleUpdate = e => {
               required
                 type="text"
                 placeholder=" service Name"
+                defaultValue={service?.serviceName}
                 name="name"
                 className="border p-2  w-full border-[#86C232] rounded"
               />
@@ -80,7 +88,7 @@ const handleUpdate = e => {
               />
             </div>
           </div>
-          {/* description and price  */}
+          {/* location and price  */}
           <div className=" md:flex gap-10 ">
             <div className="md:w-1/2">
               <h2 className="text-lg mb-2 text-slate-700">location:</h2>
@@ -88,6 +96,7 @@ const handleUpdate = e => {
               required
                 type="text"
                 placeholder="location"
+                defaultValue={service?.location}
                 name="location"
                 className="border p-2  w-full border-[#86C232] rounded"
               />
@@ -99,6 +108,7 @@ const handleUpdate = e => {
               required
                 type="text"
                 placeholder="price"
+                defaultValue={service?.price}
                 name="price"
                 className="border p-2  w-full border-[#86C232] rounded"
               />
@@ -111,6 +121,7 @@ const handleUpdate = e => {
               <input 
               required
                 type="text"
+                defaultValue={service?.description}
                 placeholder=" description"
                 name="description"
                 className="border p-2  w-full border-[#86C232] rounded"
@@ -137,6 +148,7 @@ const handleUpdate = e => {
               required
                 type="text"
                 placeholder="type photo url"
+                defaultValue={service?.image}
                 name="photo"
                 className="border p-2  w-full border-[#86C232] rounded"
               />
@@ -148,6 +160,7 @@ const handleUpdate = e => {
                 type="text"
                 placeholder="type photo url"
                 name="providerPhoto"
+                defaultValue={service?.providerImg}
                 className="border p-2  w-full border-[#86C232] rounded"
               />
             </div>

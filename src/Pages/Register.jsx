@@ -60,6 +60,7 @@ function Register() {
         })
           .then(() => console.log("profile updated"))
           .catch((error) => console.log(error.message));
+          form.reset()
       })
       .catch((error) => toast.error(error.message));
   };
