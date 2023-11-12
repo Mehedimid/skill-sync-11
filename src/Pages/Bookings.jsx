@@ -4,6 +4,7 @@ import titles from "../titles";
 import { authContext } from "../AuthProvider";
 import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 function Bookings(props) {
   const { user } = useContext(authContext);
@@ -20,7 +21,7 @@ function Bookings(props) {
 
 
   if (!bookings) {
-    return <p>no booking</p>;
+    return <p>no booking</p>
   }
   return (
     <>
@@ -29,6 +30,17 @@ function Bookings(props) {
           <title>{titles.bookings}</title>
         </Helmet>
       </div>
+
+           {/*==== navbar here ==== */}
+
+           <div className="mx-auto w-[600px] flex justify-center "> 
+            <div className="flex justify-center font-semibold ">
+              <h2 className=" py-2 px-5 "><Link to='/my-schedules'>Work Schedule</Link> </h2>
+              <h2 className=" py-2 px-5 bg-slate-300 rounded"> <Link to='/my-bookings'>Bookings</Link></h2>
+            </div>
+        </div>
+
+     {/* ======X==== */}
 
       <section className="sizing bg-slate-400 my-20 py-10">
         <h1 className="text-center text-3xl font-bold my-10">My Bookings</h1>

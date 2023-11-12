@@ -4,8 +4,14 @@ import titles from "../../titles";
 import { authContext } from "../../AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link, NavLink } from "react-router-dom";
 
 function Pending(props) {
+
+
+ 
+
+
   const [pendings, setPending] = useState();
   const [selectedStatus, setSelectedStatus] = useState("pending");
   const { user } = useContext(authContext);
@@ -53,6 +59,7 @@ function Pending(props) {
         const newPendings = [updated , ...remaining]
         setPending(newPendings)
         setSelectedStatus(statusUpdate)
+        e.target.value.reset()
       }
     })
     // console.log({status:statusUpdate});
@@ -66,8 +73,19 @@ function Pending(props) {
           <title>{titles.pending}</title>
         </Helmet>
       </div>
+     
+     {/*==== navbar here ==== */}
 
-      <div className="sizing my-24 py-10">
+        <div className="mx-auto w-[600px] flex justify-center "> 
+            <div className="flex justify-center font-semibold ">
+              <h2 className="bg-slate-300 py-2 px-5 rounded"><Link to='/my-schedules'>Work Schedule</Link> </h2>
+              <h2 className=" py-2 px-5"> <Link to='/my-bookings'>Bookings</Link></h2>
+            </div>
+        </div>
+
+     {/* ======X==== */}
+
+      <div className="sizing mb-24 py-10">
         <h1 className="text-center text-4xl font-bold my-10">
           Work Shedule
         </h1>

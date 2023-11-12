@@ -86,7 +86,7 @@ function Navbar(props) {
                     {navlinks2}
                   </ul>
                 </li>
-              )}
+            )}
             </ul>
           </div>
           {/*  -------ENDS mobile ENDs ------ */}
