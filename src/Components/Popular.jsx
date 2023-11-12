@@ -5,9 +5,9 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Popular(props) {
   const [services, setServices] = useState([]);
-     const secureAxios = useAxiosSecure()
+     const axiosSecure = useAxiosSecure()
       useEffect(()=>{
-        secureAxios("/services")
+        axiosSecure("/services")
         .then((data) => setServices(data.data));
       },[])
 

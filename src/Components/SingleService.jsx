@@ -4,6 +4,7 @@ import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
 import EveryService from "./EveryService";
 import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function SingleService(props) {
   const { user } = useContext(authContext);
@@ -11,15 +12,17 @@ function SingleService(props) {
   const [service, setService] = useState([]);
   const [otherServices, setOther] = useState({})
   const {id} = useParams()
+  const axiosSecure = useAxiosSecure()
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/services/${id}`)
+    axiosSecure.get(`/services/${id}`)
   .then(res=>setService(res.data))
   },[])
 
 
   const {
     _id,
+    providerImg,
     serviceName,
     description,
     serviceProvider,
@@ -30,8 +33,7 @@ function SingleService(props) {
   } = service;
 
 
-
-    axios.get(`http://localhost:5000/services?email=${providerEmail}`)
+    axiosSecure.get(`/services?email=${providerEmail}`)
     .then(res=>
     {
       const filterOtherServices = res.data?.length && res.data?.filter(item => item._id !== id) 
@@ -81,7 +83,9 @@ function SingleService(props) {
     };
     console.log(addService);
 
-    axios.post(`http://localhost:5000/cart`, addService)
+    const axiosSecure = useAxiosSecure()
+
+    axiosSecure.post(`/cart`, addService)
       .then((data) => {
         if (data.data.insertedId) {
           Swal.fire({
@@ -100,7 +104,17 @@ function SingleService(props) {
       <Fragment>
         <div>
           <div className="card bg-[#86C232] md:p-3 bg-opacity-25 mx-auto md:w-8/12 my-24 lg:card-side shadow-xl">
-            <figure className="md:w-1/2 ">
+
+            <figure className="md:my-20 flex flex-col">
+            <div className=" items-center ml-10 flex "> 
+                <div className="flex items-center"> 
+                   <img src={providerImg} className="rounded-full w-20 h-20" />
+                  <div className="ml-5 ">
+                  <h3 className="text-xl font-semibold ">Provider: {serviceProvider}</h3>
+                   <p>{description}</p>
+                  </div>
+                </div>
+            </div>
               <img src={image} alt="Album" />
             </figure>
             <div className="card-body md:w-1/2">
@@ -132,12 +146,12 @@ function SingleService(props) {
           {/*------------------ other user services ----------------- */}
           <div className="bg-[#86C232] bg-opacity-30 sizing  mb-20  min-h-[300px]">
             <h1 className="text-center py-6 font-bold text-2xl">
-              My other Services
+              Other Services
             </h1>
             {/* other service  */}
             <div className="grid grid-cols-1 md:grid-cols-2 mx-32 gap-4 ">
                 {
-                  otherServices.length ? otherServices.map(service => <EveryService key={service._id} service={service}></EveryService>) : <h1 className='text-red-600  text-2xl font-bold my-20'>You Don't Have Other Service</h1>
+                  otherServices.length ? otherServices.map(service => <EveryService key={service._id} service={service}></EveryService>) : <h1 className='text-red-600  text-2xl font-bold my-20'>Don't Have Other Service</h1>
                 }
             </div>
           </div>

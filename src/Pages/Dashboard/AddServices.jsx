@@ -4,9 +4,11 @@ import titles from '../../titles';
 import { authContext } from '../../AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 function AddServices(props) {
   const {user} = useContext(authContext)
+  const axiosSecure = useAxiosSecure()
 
   const handleAdd = (e) =>{
 e.preventDefault()
@@ -23,7 +25,7 @@ e.preventDefault()
   console.log(addService)
 
 
-  axios.post('http://localhost:5000/services',
+  axiosSecure.post('/services',
         addService)
         .then(data=> {
           console.log(data)

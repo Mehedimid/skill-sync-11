@@ -3,13 +3,15 @@ import { Helmet } from "react-helmet";
 import titles from "../titles";
 import { authContext } from "../AuthProvider";
 import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Bookings(props) {
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
+  const axiosSecure = useAxiosSecure()
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/cart?email=${user?.email}`)
+    axiosSecure.get(`/cart?email=${user?.email}`)
     .then((data) => {
       setBookings(data.data);
     });

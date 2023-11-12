@@ -45,7 +45,7 @@ function EveryService({ service }) {
           <p className="my-3 dark:text-gray-400">
             {description}
           </p>
-          <p className="font-semibold">{location}</p>
+          <p className="font-semibold">Service Lcation : {location}</p>
         </div>
         <div className="flex flex-wrap items-center  gap-10 ">
           <Link to={`/details/${_id}`} className="btn bg-[#86C232] hover:btn-ghost">View Details</Link>

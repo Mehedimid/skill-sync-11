@@ -3,24 +3,24 @@ import titles from "../titles";
 import { useContext, useEffect, useRef, useState } from "react";
 import EveryService from "../Components/EveryService";
 import { useLoaderData } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Services(props) {
   const searchRef = useRef()
-   const loadedData = useLoaderData()
+  //  const loadedData = useLoaderData()
   //  console.log(loadedData)
-   const [services, setServices] = useState(loadedData)
+   const [services, setServices] = useState([])
+   const axiosSecure = useAxiosSecure()
 
-  //  useEffect(()=> {
-  //   fetch('http://localhost:5000/services')
-  //   .then(res=>res.json())
-  //   .then(data=>setServices(data))
-  //  } ,[])
+   useEffect(()=> {
+      axiosSecure('/services')
+    .then(data=>setServices(data.data))
+   } ,[])
      
    const handleSubmit = () => {
-
     const searchValue = searchRef?.current?.value.toLowerCase(); 
     console.log(searchValue)
-    const filterData = loadedData.filter(item => item.serviceName.toLowerCase().includes(searchValue))
+    const filterData = services.filter(item => item.serviceName.toLowerCase().includes(searchValue))
     console.log(filterData)
     if(filterData){
       setServices(filterData)

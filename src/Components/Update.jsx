@@ -5,6 +5,7 @@ import { authContext } from "../AuthProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Update(props) {
     const navigate = useNavigate()
@@ -24,7 +25,9 @@ const handleUpdate = e => {
   const addService = {serviceName, description, serviceProvider, providerEmail, price, image, location , providerImg}
   console.log(addService)
 
-  axios.put(`http://localhost:5000/services/${id}`, addService)
+  const axiosSecure = useAxiosSecure()
+
+  axiosSecure.put(`/services/${id}`, addService)
             .then((data) => {
               if (data.data.modifiedCount > 0) {
                 Swal.fire({

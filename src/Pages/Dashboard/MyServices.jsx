@@ -1,17 +1,17 @@
 import {useContext, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import titles from '../../titles';
-import { useLoaderData } from 'react-router-dom';
 import { authContext } from "../../AuthProvider"
 import MyService from '../../Components/MyService';
 import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 
 function MyServices(props) {
+    const axiosSecure = useAxiosSecure()
     const {user} = useContext(authContext)
-    console.log(user)
     const [myServices, setMyServices] = useState([])
-    axios.get(('http://localhost:5000/services'))
+    axiosSecure.get(('/services'))
     .then(res=>setMyServices(res.data))
 
     return (

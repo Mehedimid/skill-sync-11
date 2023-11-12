@@ -5,15 +5,15 @@ import { useContext, useState } from "react";
 import { authContext } from "../AuthProvider";
 
 function Navbar(props) {
-  const {logOut , user} = useContext(authContext)
+  const { logOut, user } = useContext(authContext);
 
   const handleLogout = () => {
     logOut()
-    .then(result => {
-      // logged out 
-    })
-    .catch(error=> console.log(error.message))
-  }
+      .then((result) => {
+        // logged out
+      })
+      .catch((error) => console.log(error.message));
+  };
 
   const navlinks2 = (
     <>
@@ -27,7 +27,7 @@ function Navbar(props) {
         <NavLink to={`/my-bookings`}> My Bookings </NavLink>{" "}
       </li>
       <li>
-        <NavLink to="/pending-works"> Pending Works </NavLink>{" "}
+        <NavLink to="/my-schedules"> My Schedules </NavLink>{" "}
       </li>
     </>
   );
@@ -75,17 +75,18 @@ function Navbar(props) {
               <li>
                 <NavLink to="/all-services">Services </NavLink>
               </li>
-              {}
-              <li className="dropdown dropdown-hover">
-                <p tabIndex={0} className=" m-1">
-                  Dashboard
-                </p>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                  {navlinks2}
-                </ul>
-              </li>
+              {user && (
+                <li className="dropdown dropdown-hover">
+                  <p tabIndex={0} className=" m-1">
+                    Dashboard
+                  </p>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    {navlinks2}
+                  </ul>
+                </li>
+              )}
             </ul>
           </div>
           {/*  -------ENDS mobile ENDs ------ */}
@@ -99,32 +100,32 @@ function Navbar(props) {
             <li className="mr-2">
               <NavLink to="/all-services">Services </NavLink>
             </li>
-            {user && 
-            <li className="dropdown dropdown-hover mr-2">
-            <p tabIndex={0} className=" m-1">
-              Dashboard
-            </p>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              {navlinks2}
-            </ul>
-          </li>
-            }
+            {user && (
+              <li className="dropdown dropdown-hover mr-2">
+                <p tabIndex={0} className=" m-1">
+                  Dashboard
+                </p>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                  {navlinks2}
+                </ul>
+              </li>
+            )}
           </ul>
           <div>
             {user ? (
               <div className="flex justify-center items-center gap-1 text-white">
-                <h2>
-                  {
-                    user ? user.displayName : '?'
-                  }
-                </h2>
+                <h2>{user ? user.displayName : "?"}</h2>
                 <img
-                  src={user?.photoURL }
+                  src={user?.photoURL}
                   className="h-12 w-12 rounded-full bg-white"
                 />
-                <button className="text-[#86C232] object-cover" onClick={handleLogout}>Log out</button>
+                <button
+                  className="text-[#86C232] object-cover"
+                  onClick={handleLogout}>
+                  Log out
+                </button>
               </div>
             ) : (
               <NavLink to="/login" className="text-[#86C232] ">

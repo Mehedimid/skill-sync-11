@@ -2,23 +2,62 @@ import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../../titles";
 import { authContext } from "../../AuthProvider";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 function Pending(props) {
-    const [pendings, setPending] = useState()
-    const {user} = useContext(authContext)
+  const [pendings, setPending] = useState();
+  const [selectedStatus, setSelectedStatus] = useState("pending");
+  const { user } = useContext(authContext);
+  const axiosSecure = useAxiosSecure();
 
-useEffect(()=>{
+  useEffect(() => {
+    axiosSecure.get(`/cart/${user?.email}`).then((data) => {
+      setPending(data.data);
+    });
+  }, []);
+
   
-},[])
+  const handleDlt = id => {
+   
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this booking!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      axiosSecure.delete(`/cart/${id}`).then((data) => {
+        if (data.data.deletedCount > 0) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          const remain = pendings?.filter((card) => card._id !== id);
+          setPending(remain);
+          console.log("deleted");
+        }
+      });
+    });
+  
 
-useEffect(()=>{
-  axios.get(`http://localhost:5000/cart/${user?.email}`)
-  .then((data) => {
-    setPending(data.data);
-  })
-},[])
-     
+  }
+
+  const handleStatus = (id, statusUpdate) => {
+    axiosSecure.patch(`/cart/${id}`, { status: statusUpdate })
+    .then(res=>{
+      console.log('here comes: ', res.data)
+      if(res.data.modifiedCount){
+        const remaining = pendings?.filter(item => item._id !== id)
+        const updated = pendings?.find(item => item._id === id)
+        updated.status = statusUpdate ;
+        const newPendings = [updated , ...remaining]
+        setPending(newPendings)
+        setSelectedStatus(statusUpdate)
+      }
+    })
+    // console.log({status:statusUpdate});
+
+  };
 
   return (
     <>
@@ -29,34 +68,33 @@ useEffect(()=>{
       </div>
 
       <div className="sizing my-24 py-10">
-          
-      <h1 className="text-center text-4xl font-bold my-10">My Pending Shedules</h1>
-     {/* {
+        <h1 className="text-center text-4xl font-bold my-10">
+          Work Shedule
+        </h1>
 
-        pendings?.length ? pendings?.map(item =>  ) :
-     } */}
-
-<div className="overflow-x-auto bg-orange-100 py-6">
-        <table className="table ">
-          {/* head */}
-          <thead>
-            <tr>
-       
-             
-              <th>Image</th>
-              <th>Customer Email</th>
-              <th>service</th>
-              <th>date</th>
-              <th>price</th>
-              <th>instruction</th>
-             
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {pendings?.length ? pendings?.map((order, idx) => (
-                  <tr key={idx} className="text-base  shadow-xl border-black border-b-2">
-  
+        <div className="overflow-x-auto bg-orange-100 py-6">
+          <table className="table ">
+            {/* head */}
+            <thead>
+              <tr className="font-bold text-xl text-[#86C232]">
+                <th></th>
+                <th>Image</th>
+                <th>Customer Email</th>
+                <th>service</th>
+                <th>date</th>
+                <th>price</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {pendings?.length ? (
+                pendings?.map((order, idx) => (
+                  <tr
+                    key={idx}
+                    className="text-base  shadow-xl border-black border-b-2">
+                   <td> <button className="btn btn-error" onClick={()=>handleDlt(order._id)}>X</button></td>
                     <td>
                       <div className="avatar">
                         <div className="mask mask-squircle w-20 h-20">
@@ -74,18 +112,33 @@ useEffect(()=>{
                     <td>{order.serviceName}</td>
                     <td>{order.date}</td>
                     <td>{order.price}$</td>
-                    <td>{order.instruction}</td>
+                    <td>{order.location}</td>
                     <th>
-                      <button>update</button>
+                      <div className="flex items-center gap-2">
+                        <p className="text-red-500 font-medium">
+                          {order.status}
+                        </p>
+                        <select
+                          value={selectedStatus}
+                          onChange={(e) =>
+                            handleStatus(order._id, e.target.value)
+                          }>
+                          <option value="pending">pending</option>
+                          <option value="in progress">in progress</option>
+                          <option value="completed">completed</option>
+                        </select>
+                      </div>
                     </th>
                   </tr>
                 ))
-              :  <p className="text-center text-2xl text-red-500 font-bold my-10">No pendng schedules</p>}
-          </tbody>
-        </table>
-      </div>
-          
-          
+              ) : (
+                <p className="text-center text-2xl text-red-500 font-bold my-10">
+                  No pendng schedules
+                </p>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

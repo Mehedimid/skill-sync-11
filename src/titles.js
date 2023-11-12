@@ -10,7 +10,7 @@ const titles = {
     register:'SK|Sign-Up',
     update:'SK|update',
     bookings:'SK|Bookings',
-    pending:'SK|pending'
+    pending:'SK|schdules'
 }
 
 export default titles;  

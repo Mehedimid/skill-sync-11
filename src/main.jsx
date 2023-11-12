@@ -37,12 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/all-services',
         element:<Services></Services>,
-        loader:()=>fetch('http://localhost:5000/services')
       },
       {
         path:'/my-services',
         element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/services')
 
       },
       {
@@ -52,10 +50,9 @@ const router = createBrowserRouter([
       {
         path:'/my-bookings',
         element:<PrivateRoute><Bookings></Bookings></PrivateRoute>,
-  
       },
       {
-       path:'/pending-works',
+       path:'/my-schedules',
        element:<PrivateRoute><Pending></Pending></PrivateRoute>
       },
       {
@@ -69,7 +66,6 @@ const router = createBrowserRouter([
       {
         path:'/details/:id',
         element:<PrivateRoute><SingleService></SingleService></PrivateRoute>,
-        // loader:()=> fetch
       }
       
     ]

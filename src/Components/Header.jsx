@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 function Header(props) {
+
+  const handleType = () => {
+    // access word count number
+    // console.log(count)}
+  }
+
+  const handleDone = () => {
+    console.log(`Done after 5 loops!`)
+  }
     return (
         <>
 {/* <!-- Hero --> */}
@@ -13,8 +23,27 @@ function Header(props) {
 
       {/* <!-- Title --> */}
       <div className="max-w-3xl text-center mx-auto">
-        <h1 className="block font-medium text-[#86C232] text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-        Unlock a World of Skills and Services
+        <h1 className="block font-medium text-[#86C232] text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+        {/* Unlock a World of Skills and Services */}
+        <div className='App'>
+      <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}>
+      Your Service Haven{' '}   <br />
+        <span style={{ color: 'red', fontWeight: 'bold' }}>
+          {/* Style will be inherited from the parent element */}
+          <Typewriter
+            words={['SkillSync', ' Connect', 'Book', ' Empower!']}
+            loop={15}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+            // onLoopDone={handleDone}
+            // onType={handleType}
+          />
+        </span>
+      </h1>
+    </div>
         </h1>
       </div>
       {/* <!-- End Title --> */}
@@ -25,8 +54,8 @@ function Header(props) {
 
       {/* <!-- Buttons --> */}
       <div className="text-center">
-        <Link to='/register' className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-[#86C232] to-white shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-[#61892F] font-bold text-base rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800" href="#">
-          Get started
+        <Link to='/register' className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-indigo-900 to-red-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white font-bold text-base rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800" href="#">
+          Get Register
           <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="2"  ><path d="m9 18 6-6-6-6"/></svg>
         </Link>
       </div>
