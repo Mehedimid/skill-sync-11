@@ -13,7 +13,7 @@ function Pending(props) {
 
 
   const [pendings, setPending] = useState();
-  const [selectedStatus, setSelectedStatus] = useState("pending");
+  // const [selectedStatus, setSelectedStatus] = useState("pending");
   const { user } = useContext(authContext);
   const axiosSecure = useAxiosSecure();
 
@@ -35,14 +35,16 @@ function Pending(props) {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      axiosSecure.delete(`/cart/${id}`).then((data) => {
-        if (data.data.deletedCount > 0) {
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          const remain = pendings?.filter((card) => card._id !== id);
-          setPending(remain);
-          console.log("deleted");
-        }
-      });
+      if(result.isConfirmed){
+        axiosSecure.delete(`/cart/${id}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            const remain = pendings?.filter((card) => card._id !== id);
+            setPending(remain);
+            console.log("deleted");
+          }
+        });
+      }
     });
   
 
@@ -137,7 +139,7 @@ function Pending(props) {
                           {order.status}
                         </p>
                         <select
-                          value={selectedStatus}
+                          defaultValue={order.status}
                           onChange={(e) =>
                             handleStatus(order._id, e.target.value)
                           }>

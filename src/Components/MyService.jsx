@@ -35,14 +35,16 @@ function MyService({ service, setMyServices, myServices }) {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      axiosSecure.delete(`/services/${id}`).then((data) => {
-        if (data.data.deletedCount > 0) {
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          const remain = myServices.filter((card) => card._id !== id);
-          setMyServices(remain);
-          console.log("deleted");
-        }
-      });
+      if(result.isConfirmed){
+        axiosSecure.delete(`/services/${id}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            const remain = myServices.filter((card) => card._id !== id);
+            setMyServices(remain);
+            console.log("deleted");
+          }
+        });
+      }
     });
   };
   return (

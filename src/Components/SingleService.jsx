@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import EveryService from "./EveryService";
 import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import OtherService from "./OtherService";
 
 function SingleService(props) {
   const { user } = useContext(authContext);
@@ -41,12 +42,6 @@ function SingleService(props) {
         setOther(filterOtherServices)
       }
     })
-
-
-
-
- 
-
 
   const showModal = () => {
     let element = document.getElementById("modal");
@@ -149,9 +144,9 @@ function SingleService(props) {
               Other Services
             </h1>
             {/* other service  */}
-            <div className="grid grid-cols-1 md:grid-cols-2 mx-32 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 mx-52 gap-4 ">
                 {
-                  otherServices.length ? otherServices.map(service => <EveryService key={service._id} service={service}></EveryService>) : <h1 className='text-red-600  text-2xl font-bold my-20'>Don't Have Other Service</h1>
+                  otherServices.length ? otherServices.map(service => <OtherService key={service._id} service={service}></OtherService>) : <h1 className='text-red-600  text-2xl font-bold my-20'>Don't Have Other Service</h1>
                 }
             </div>
           </div>

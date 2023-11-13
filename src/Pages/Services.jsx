@@ -1,19 +1,18 @@
 import { Helmet } from "react-helmet";
 import titles from "../titles";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import EveryService from "../Components/EveryService";
-import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function Services(props) {
   const searchRef = useRef()
-  //  const loadedData = useLoaderData()
-  //  console.log(loadedData)
+  // const [search, setSearch] = useState('')
    const [services, setServices] = useState([])
    const axiosSecure = useAxiosSecure()
 
+  //  ?search=${search}
    useEffect(()=> {
-      axiosSecure('/services')
+      axiosSecure(`/services`)
     .then(data=>setServices(data.data))
    } ,[])
      
@@ -27,6 +26,12 @@ function Services(props) {
     }
    }
 
+  // const handleSubmit=e=>{
+  //   e.preventDefault()
+  //   const searchvalue = e.target.search.value 
+  //   setSearch(searchvalue)
+  // }
+
   return (
     <div className="my-10">
       <Helmet>
@@ -38,7 +43,12 @@ function Services(props) {
        <div className="relative mb-6 md:w-1/2 mx-auto">
        <input ref={searchRef} type="text" placeholder="Search here..." className="input input-bordered text-black w-full pr-16" /> 
         <button onClick={handleSubmit} className="btn btn-error absolute text-white top-0 right-0 rounded-l-none">Search</button>
-      </div>     
+      </div>    
+
+            {/* <form  onSubmit={handleSubmit}  className="relative mb-6 md:w-1/2 mx-auto">
+       <input ref={searchRef} type="text" name="search" placeholder="Search here..." className="input input-bordered text-black w-full pr-16" /> 
+        <button type="submit" className="btn btn-error absolute text-white top-0 right-0 rounded-l-none">Search</button>
+      </form>     */}
 
       <div className="md:w-2/3 space-y-12 mx-auto sizing">
         {

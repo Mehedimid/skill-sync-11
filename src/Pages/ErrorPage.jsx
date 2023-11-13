@@ -12,7 +12,8 @@ function ErrorPage(props) {
         <Navbar></Navbar>
       </div>
 
-      <div className="flex justify-center">
+<div className="flex flex-col lg:flex-row">
+<div className="flex justify-center w-1/2">
         <Lottie animationData={errorAni} className="w-[500px] h-96" loop={true} />;
         </div>
 
@@ -36,6 +37,7 @@ function ErrorPage(props) {
           </div>
         </div>
       </section>
+</div>
 
 
     </div>
