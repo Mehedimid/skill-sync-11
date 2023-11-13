@@ -20,7 +20,8 @@ function Login(props) {
   const googleHandler = () => {
      signInWithPopup(auth, provider)
       .then(res => {
-        console.log(res.user)
+        navigate(location || "/");
+        
       })
       .catch(error=> {
         console.error(error.message)
