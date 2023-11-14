@@ -19,6 +19,13 @@ import SingleService from './Components/SingleService.jsx';
 import Update from './Components/Update.jsx';
 import Bookings from './Pages/Bookings.jsx';
 import Pending from './Pages/Dashboard/Pending.jsx';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import MyServices2 from './Pages/Dashboard/MyServices2.jsx';
+
+
 
 const router = createBrowserRouter([
   {
@@ -38,9 +45,14 @@ const router = createBrowserRouter([
         path:'/all-services',
         element:<Services></Services>,
       },
-      {
+      // {
+      //   path:'/my-services',
+      //   element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
+
+      // },
+           {
         path:'/my-services',
-        element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
+        element:<PrivateRoute><MyServices2></MyServices2></PrivateRoute>,
 
       },
       {
@@ -72,10 +84,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+   <QueryClientProvider client={queryClient}>
    <AuthProvider>
      <RouterProvider router={router} />
    </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )

@@ -2,14 +2,39 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Lottie from "lottie-react";
+import loadingAni from "../assets/loading.json"
+import { useQuery } from "@tanstack/react-query";
 
 function Popular(props) {
   const [services, setServices] = useState([]);
-     const axiosSecure = useAxiosSecure()
-      useEffect(()=>{
-        axiosSecure("/services")
-        .then((data) => setServices(data.data));
-      },[])
+  const axiosSecure = useAxiosSecure()
+
+  const { isPending, data } = useQuery({
+    queryKey: ["popular-services"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/services");
+      return setServices(res.data);
+    },
+  });
+
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center my-12">
+        <Lottie
+          animationData={loadingAni}
+          className="w-96 h-96"
+          loop={true}
+        />
+      </div>
+    );
+  }
+
+    //  const axiosSecure = useAxiosSecure()
+    //   useEffect(()=>{
+    //     axiosSecure("/services")
+    //     .then((data) => setServices(data.data));
+    //   },[])
 
   return (
     <div className="grid grid-cols-1 gap-16  md:px-36 bg-opacity-0   md:grid-cols-2 ">

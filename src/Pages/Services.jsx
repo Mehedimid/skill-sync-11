@@ -3,6 +3,9 @@ import titles from "../titles";
 import { useEffect, useRef, useState } from "react";
 import EveryService from "../Components/EveryService";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import loadingAni from "../assets/loading.json"
 
 function Services(props) {
   const searchRef = useRef()
@@ -10,11 +13,33 @@ function Services(props) {
    const [services, setServices] = useState([])
    const axiosSecure = useAxiosSecure()
 
+
+
+  const { isPending, data } = useQuery({
+    queryKey: ["all-services"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/services");
+      return setServices(res.data);
+    },
+  });
+
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center my-12">
+        <Lottie
+          animationData={loadingAni}
+          className="w-96 h-96"
+          loop={true}
+        />
+      </div>
+    );
+  }
+
   //  ?search=${search}
-   useEffect(()=> {
-      axiosSecure(`/services`)
-    .then(data=>setServices(data.data))
-   } ,[])
+  //  useEffect(()=> {
+  //     axiosSecure(`/services`)
+  //   .then(data=>setServices(data.data))
+  //  } ,[])
      
    const handleSubmit = () => {
     const searchValue = searchRef?.current?.value.toLowerCase(); 

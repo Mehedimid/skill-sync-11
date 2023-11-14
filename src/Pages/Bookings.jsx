@@ -5,18 +5,43 @@ import { authContext } from "../AuthProvider";
 import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import loadingAni from "../assets/loading.json"
+
 
 function Bookings(props) {
   const { user } = useContext(authContext);
   const [bookings, setBookings] = useState([]);
   const axiosSecure = useAxiosSecure()
 
-  useEffect(()=>{
-    axiosSecure.get(`/cart?email=${user?.email}`)
-    .then((data) => {
-      setBookings(data.data);
-    });
-  },[])
+  const { isPending, data } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/cart?email=${user?.email}`);
+      return setBookings(res.data);
+    },
+  });
+
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center my-12">
+        <Lottie
+          animationData={loadingAni}
+          className="w-96 h-96"
+          loop={true}
+        />
+      </div>
+    );
+  }
+
+
+  // useEffect(()=>{
+  //   axiosSecure.get(`/cart?email=${user?.email}`)
+  //   .then((data) => {
+  //     setBookings(data.data);
+  //   });
+  // },[])
 
 
 

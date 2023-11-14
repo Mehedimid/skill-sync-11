@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function MyService({ service, setMyServices, myServices }) {

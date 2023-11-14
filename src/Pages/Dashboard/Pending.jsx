@@ -5,23 +5,42 @@ import { authContext } from "../../AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link, NavLink } from "react-router-dom";
+import Lottie from "lottie-react";
+import loadingAni from "../../assets/loading.json"
+import { useQuery } from "@tanstack/react-query";
+
 
 function Pending(props) {
-
-
- 
-
-
   const [pendings, setPending] = useState();
   // const [selectedStatus, setSelectedStatus] = useState("pending");
   const { user } = useContext(authContext);
   const axiosSecure = useAxiosSecure();
 
-  useEffect(() => {
-    axiosSecure.get(`/cart/${user?.email}`).then((data) => {
-      setPending(data.data);
-    });
-  }, []);
+  const { isPending, data } = useQuery({
+    queryKey: ["pendings"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/cart/${user?.email}`);
+      return setPending(res.data);
+    },
+  });
+
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center my-12">
+        <Lottie
+          animationData={loadingAni}
+          className="w-96 h-96"
+          loop={true}
+        />
+      </div>
+    );
+  }
+
+  // useEffect(() => {
+  //   axiosSecure.get(`/cart/${user?.email}`).then((data) => {
+  //     setPending(data.data);
+  //   });
+  // }, []);
 
   
   const handleDlt = id => {
@@ -92,7 +111,7 @@ function Pending(props) {
           Work Shedule
         </h1>
 
-        <div className="overflow-x-auto bg-orange-100 py-6">
+        <div className="overflow-x-auto bg-orange-100 rounded-2xl shadow-xl py-6">
           <table className="table ">
             {/* head */}
             <thead>
@@ -123,9 +142,9 @@ function Pending(props) {
                       </div>
                     </td>
                     <td>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center  space-x-3">
                         <div>
-                          <div className="font-bold">{order.userEmail}</div>
+                          <h2  className="font-bold text-sm">{order.userEmail}</h2>
                         </div>
                       </div>
                     </td>
