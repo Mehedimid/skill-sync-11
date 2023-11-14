@@ -113,7 +113,7 @@ function Pending(props) {
                 pendings?.map((order, idx) => (
                   <tr
                     key={idx}
-                    className="text-base  shadow-xl border-black border-b-2">
+                    className="text-base font-medium shadow-xl border-black border-b-2">
                    <td> <button className="btn btn-error" onClick={()=>handleDlt(order._id)}>X</button></td>
                     <td>
                       <div className="avatar">
@@ -135,10 +135,11 @@ function Pending(props) {
                     <td>{order.location}</td>
                     <th>
                       <div className="flex items-center gap-2">
-                        <p className="text-red-500 font-medium">
-                          {order.status}
+                        <p className="text-green-500  w-24 font-semibold ">
+                          {order?.status !== 'pending' ? order.status : <span className="text-red-600">pending</span> }
                         </p>
                         <select
+                          className="bg-black p-1 text-[#86C232] bg-opacity-90"
                           defaultValue={order.status}
                           onChange={(e) =>
                             handleStatus(order._id, e.target.value)
