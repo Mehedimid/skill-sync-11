@@ -39,7 +39,7 @@ function Popular(props) {
   return (
     <div className="grid grid-cols-1 gap-16  md:px-36 bg-opacity-0   md:grid-cols-2 ">
       {services?.length > 0
-        ? services?.slice(0, 4).map((service) => (
+        ? services?.filter(i => i.popular == true).map((service) => (
             <div key={service._id} className="rounded-md shadow-xl shadow-[#86C232] bg-neutral-200 dark:bg-gray-900 dark:text-gray-100">
               <div className="flex items-center justify-between p-3">
                 <div className="flex items-center space-x-2">
