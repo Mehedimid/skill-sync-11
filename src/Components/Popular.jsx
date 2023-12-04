@@ -30,11 +30,7 @@ function Popular(props) {
     );
   }
 
-    //  const axiosSecure = useAxiosSecure()
-    //   useEffect(()=>{
-    //     axiosSecure("/services")
-    //     .then((data) => setServices(data.data));
-    //   },[])
+
 
   return (
     <div className="grid grid-cols-1 gap-16  md:px-36 bg-opacity-0   md:grid-cols-2 ">
