@@ -2,24 +2,21 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
-import EveryService from "./EveryService";
-import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import OtherService from "./OtherService";
+import PopularCard from "../shared/PopularCard";
+import SectionTitle from "../shared/SectionTitle";
 
 function SingleService(props) {
   const { user } = useContext(authContext);
   const navigate = useNavigate();
   const [service, setService] = useState([]);
-  const [otherServices, setOther] = useState({})
-  const {id} = useParams()
-  const axiosSecure = useAxiosSecure()
+  const [otherServices, setOther] = useState({});
+  const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
 
-  useEffect(()=>{
-    axiosSecure.get(`/services/${id}`)
-  .then(res=>setService(res.data))
-  },[])
-
+  useEffect(() => {
+    axiosSecure.get(`/services/${id}`).then((res) => setService(res.data));
+  }, []);
 
   const {
     _id,
@@ -33,15 +30,13 @@ function SingleService(props) {
     location,
   } = service;
 
-
-    axiosSecure.get(`/services?email=${providerEmail}`)
-    .then(res=>
-    {
-      const filterOtherServices = res.data?.length && res.data?.filter(item => item._id !== id) 
-      if(filterOtherServices){
-        setOther(filterOtherServices)
-      }
-    })
+  axiosSecure.get(`/services?email=${providerEmail}`).then((res) => {
+    const filterOtherServices =
+      res.data?.length && res.data?.filter((item) => item._id !== id);
+    if (filterOtherServices) {
+      setOther(filterOtherServices);
+    }
+  });
 
   const showModal = () => {
     let element = document.getElementById("modal");
@@ -78,43 +73,43 @@ function SingleService(props) {
     };
     console.log(addService);
 
-    const axiosSecure = useAxiosSecure()
+    const axiosSecure = useAxiosSecure();
 
-    axiosSecure.post(`/cart`, addService)
-      .then((data) => {
-        if (data.data.insertedId) {
-          Swal.fire({
-            title: "Success!!",
-            text: "Successfully added to cart!!",
-            icon: "success",
-            confirmButtonText: "Cool",
-          });
-          form.reset();
-        }
-      });
+    axiosSecure.post(`/cart`, addService).then((data) => {
+      if (data.data.insertedId) {
+        Swal.fire({
+          title: "Success!!",
+          text: "Successfully added to cart!!",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        form.reset();
+      }
+    });
   };
 
   return (
     <>
       <Fragment>
         <div>
-          <div className="card bg-[#86C232] md:p-3 bg-opacity-25 mx-auto md:w-8/12 my-24 lg:card-side shadow-xl">
-
+          <div className="card bg-white md:p-3 text-1 mx-auto md:w-8/12 my-24 md:my-0  shadow-xl">
             <figure className="md:my-20 flex flex-col">
-            <div className=" items-center ml-10 flex "> 
-                <div className="flex items-center"> 
-                   <img src={providerImg} className="rounded-full w-20 h-20" />
+              <div className=" items-center m-10 flex ">
+                <div className="flex items-center">
+                  <img src={providerImg} className="rounded-full w-20 h-20" />
                   <div className="ml-5 ">
-                  <h3 className="text-xl font-semibold ">Provider: {serviceProvider}</h3>
-                   <p>{description}</p>
+                    <h3 className="text-xl font-semibold ">
+                      Provider: {serviceProvider}
+                    </h3>
+                    <p>{description}</p>
                   </div>
                 </div>
-            </div>
+              </div>
               <img src={image} alt="Album" />
             </figure>
-            <div className="card-body md:w-1/2">
-              <h2 className="card-title text-3xl">{serviceName}</h2>
-              <p className="text-xl font-semibold">Price:$ {price}</p>
+            <div className="card-body ">
+              <SectionTitle>{serviceName}</SectionTitle>
+              <p className="text-2xl text-2 font-semibold">Price:$ {price}</p>
               <p className="font-semibold">{location}</p>
 
               <p className="text-slate-700">
@@ -132,22 +127,28 @@ function SingleService(props) {
                 expectations.
               </p>
               <div className="card-actions">
-                <button onClick={showModal} className="btn btn-error">
+                <button
+                  onClick={showModal}
+                  className="common-btn2 border-2 border-gray-500 font-semibold">
                   Book Now
                 </button>
               </div>
             </div>
           </div>
           {/*------------------ other user services ----------------- */}
-          <div className="bg-[#86C232] bg-opacity-30 sizing  mb-20  min-h-[300px]">
-            <h1 className="text-center py-6 font-bold text-2xl">
-              Other Services
-            </h1>
+          <div className=" sizing  my-20  min-h-[300px]">
+
             {/* other service  */}
-            <div className="grid grid-cols-1 md:grid-cols-2 mx-52 gap-4 ">
-                {
-                  otherServices.length ? otherServices.map(service => <OtherService key={service._id} service={service}></OtherService>) : <h1 className='text-red-600  text-2xl font-bold my-20'>Don't Have Other Service</h1>
-                }
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:mx-44 md:mx-10 gap-10 ">
+              {otherServices.length ? (
+                otherServices.map((item) => (
+                  <PopularCard key={item._id} item={item}></PopularCard>
+                ))
+              ) : (
+                <h1 className="text-red-600  text-2xl font-bold my-20">
+           
+                </h1>
+              )}
             </div>
           </div>
 
@@ -158,8 +159,8 @@ function SingleService(props) {
             <div className="bg-white">
               <form
                 onSubmit={handleAdd}
-                className="border w-full mx-auto bg-neutral-700 shadow-xl bg-opacity-10 space-y-6  md:px-16 py-5">
-                <h1 className="text-3xl font-bold my-6 text-center text-[#86C232]">
+                className="border w-full mx-auto shadow-xl  space-y-3  md:px-16 ">
+                <h1 className="text-3xl font-bold my-6 text-center text-1">
                   Purchas My Service
                 </h1>
                 {/* service name and provider  */}
@@ -175,7 +176,7 @@ function SingleService(props) {
                       defaultValue={serviceName}
                       placeholder=" service Name"
                       name="name"
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                   <div className="  md:w-1/2">
@@ -189,7 +190,7 @@ function SingleService(props) {
                       placeholder=" Service Provider"
                       defaultValue={serviceProvider}
                       name="serviceProvider"
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                 </div>
@@ -204,7 +205,7 @@ function SingleService(props) {
                       name="location"
                       defaultValue={location}
                       disabled
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
 
@@ -217,7 +218,7 @@ function SingleService(props) {
                       name="price"
                       defaultValue={price}
                       disabled
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                 </div>
@@ -232,7 +233,7 @@ function SingleService(props) {
                       name="userEmail"
                       defaultValue={user?.email}
                       disabled
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                   <div className="  md:w-1/2">
@@ -244,7 +245,7 @@ function SingleService(props) {
                       disabled
                       defaultValue={providerEmail}
                       name="email"
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                 </div>
@@ -259,7 +260,7 @@ function SingleService(props) {
                       name="photo"
                       defaultValue={image}
                       disabled
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                 </div>
@@ -275,7 +276,7 @@ function SingleService(props) {
                       type="text"
                       placeholder="instruction"
                       name="instruction"
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                   <div className="w-1/2">
@@ -284,7 +285,7 @@ function SingleService(props) {
                       required
                       type="date"
                       name="date"
-                      className="border p-2  w-full border-[#86C232] rounded"
+                      className="border p-2  w-full border-[#B33030] rounded"
                     />
                   </div>
                 </div>

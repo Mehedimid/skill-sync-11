@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../AuthProvider";
 import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import SectionTitle from "../shared/SectionTitle";
 
 function Register() {
   const { createUser } = useContext(authContext);
@@ -71,56 +72,62 @@ function Register() {
         <title>{titles.register}</title>
       </Helmet>
 
-      <div className="my-10">
+      <div className="mt-28">
 
-      <h1 className="text-3xl font-bold my-6 text-center text-black">
-        Register Your Account
-      </h1>
+        <div className="flex justify-center ">
+          <SectionTitle>Please Regiter</SectionTitle>
+        </div>
 
-        <div className="flex  items-center mb-5 justify-center text-center dark:bg-gray-900 dark:text-gray-100">
+
+
+        <div className="flex  items-center my-10 justify-center text-center">
           <form
             onSubmit={handleRegister}
-            className="flex bg-[#86C232]  flex-col w-full max-w-lg p-12 rounded shadow-lg dark:text-gray-100">
+            className="flex bg-1 flex-col w-full max-w-lg p-12 rounded shadow-lg dark:">
             {/* user phot field  */}
-            <p className="self-start text-xs font-semibold">photo Url</p>
+            <p className="text-4 mt-5 text-start font-semibold">photo Url</p>
             <input
               required
+              placeholder="photo URL"
               name="photo"
               type="text"
-              className="flex items-center mb-5 h-12 px-4 mt-2 rounded focus:outline-none focus:ri dark:text-gray-900 focus:dark:border-violet-400 focus:ri"
+              className="input-common"
             />
 
             {/* usernam field    */}
-            <p className="self-start text-xs font-semibold">Username</p>
+            <p className="text-4 mt-5 text-start font-semibold">Username</p>
             <input
               required
+              placeholder="Your Name"
               name="username"
               type="text"
-              className="flex items-center mb-5 h-12 px-4 mt-2 rounded focus:outline-none focus:ri dark:text-gray-900 focus:dark:border-violet-400 focus:ri"
+              className="input-common"
             />
 
             {/* email field  */}
-            <p className="self-start text-xs font-semibold">Email</p>
+            <p className="text-4 mt-5 text-start font-semibold">Email</p>
             <input
               required
+              placeholder="Your Email"
               name="email"
               type="email"
-              className="flex items-center mb-5 h-12 px-4 mt-2 rounded focus:outline-none focus:ri dark:text-gray-900 focus:dark:border-violet-400 focus:ri"
+              className="input-common"
             />
 
             {/* password field  */}
-            <p className="self-start mt-3 text-xs font-semibold">Password</p>
+            <p className="text-4 mt-5 text-start font-semibold">Password</p>
             <input
               required
+              placeholder="Your Password"
               name="password"
               type="password"
-              className="flex items-center mb-5 h-12 px-4 mt-2 rounded focus:outline-none focus:ri dark:text-gray-900 focus:dark:border-violet-400 focus:ri"
+              className="input-common"
             />
 
             {/* sign up  */}
             <button
               type="submit"
-              className="flex bg-slate-300  items-center justify-center h-12 px-6 mt-8 text-sm font-semibold rounded-lg dark:bg-violet-400 dark:text-gray-900">
+              className="common-btn mt-5">
               Sign Up
             </button>
 
@@ -128,7 +135,7 @@ function Register() {
               Already have an account?
               <Link
                 to="/login"
-                className="hover:underline ml-2 font-semibold dark:text-violet-400">
+                className="hover:underline ml-2 font-semibold dark:">
                 Sign In
               </Link>
             </p>

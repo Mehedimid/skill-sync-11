@@ -5,6 +5,7 @@ import { authContext } from "../AuthProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import SectionTitle from "../shared/SectionTitle";
 
 function Update(props) {
     const [service, setService] = useState()
@@ -58,10 +59,8 @@ const handleUpdate = e => {
 
       <form
           onSubmit={handleUpdate}
-          className="border w-9/12 mx-auto bg-neutral-700 shadow-xl bg-opacity-10 space-y-6 mt-12 md:px-16 py-5">
-          <h1 className="text-3xl font-bold my-6 text-center text-[#86C232]">
-            Update This Service 
-          </h1>
+          className="border w-9/12 mx-auto bg-neutral-700 shadow-xl bg-opacity-10 space-y-6 mt-12 md:px-16 py-16">
+          <div><SectionTitle>Update Service</SectionTitle></div>
           {/* service name and provider  */}
           <div className=" md:flex gap-10 ">
             <div className="md:w-1/2">
@@ -72,7 +71,7 @@ const handleUpdate = e => {
                 placeholder=" service Name"
                 defaultValue={service?.serviceName}
                 name="name"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
             <div className="  md:w-1/2">
@@ -84,7 +83,7 @@ const handleUpdate = e => {
                 placeholder=" Service Provider"
                 defaultValue={user?.displayName}
                 name="serviceProvider"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
@@ -98,7 +97,7 @@ const handleUpdate = e => {
                 placeholder="location"
                 defaultValue={service?.location}
                 name="location"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
 
@@ -110,7 +109,7 @@ const handleUpdate = e => {
                 placeholder="price"
                 defaultValue={service?.price}
                 name="price"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
@@ -124,7 +123,7 @@ const handleUpdate = e => {
                 defaultValue={service?.description}
                 placeholder=" description"
                 name="description"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
             <div className="  md:w-1/2">
@@ -136,7 +135,7 @@ const handleUpdate = e => {
                 disabled
                 defaultValue={user?.email}
                 name="email"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
@@ -150,7 +149,7 @@ const handleUpdate = e => {
                 placeholder="type photo url"
                 defaultValue={service?.image}
                 name="photo"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
             <div className="w-1/2">
@@ -161,7 +160,7 @@ const handleUpdate = e => {
                 placeholder="type photo url"
                 name="providerPhoto"
                 defaultValue={service?.providerImg}
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
@@ -169,7 +168,7 @@ const handleUpdate = e => {
             <button
               type="submit"
               value="Add Coffe"
-              className="w-full text-white font-bold bg-[#86C232] p-2">
+              className="w-full common-btn2 border-gray-400 font-bold">
               
               Update 
             </button>

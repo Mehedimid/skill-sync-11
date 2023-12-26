@@ -1,71 +1,88 @@
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import "./extra sections/header.css";
 
 function Header(props) {
-
   const handleType = () => {
     // access word count number
     // console.log(count)}
-  }
+  };
 
   const handleDone = () => {
-    console.log(`Done after 5 loops!`)
-  }
-    return (
-        <>
-{/* <!-- Hero --> */}
-<div className="bg-slate-900">
-  <div className="bg-gradient-to-b from-violet-600/[.15] via-transparent">
-    <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
-      {/* <!-- Announcement Banner --> */}
+    console.log(`Done after 5 loops!`);
+  };
+  return (
+    <div className="header-bg">
+      {/* <!-- Hero --> */}
+      <div className="">
+        <div className="bg-gradient-to-b from-violet-600/[.15] via-transparent">
+          <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
+            {/* <!-- Announcement Banner --> */}
 
-      {/* <!-- End Announcement Banner --> */}
+            {/* <!-- End Announcement Banner --> */}
 
-      {/* <!-- Title --> */}
-      <div className="max-w-3xl text-center mx-auto">
-        <h1 className="block font-medium text-[#86C232] text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-        {/* Unlock a World of Skills and Services */}
-        <div className='App'>
-      <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}>
-      Your Service Haven{' '}   <br />
-        <span style={{ color: 'red', fontWeight: 'bold' }}>
-          {/* Style will be inherited from the parent element */}
-          <Typewriter
-            words={['SkillSync', ' Connect', 'Book', ' Empower!']}
-            loop={15}
-            cursor
-            cursorStyle='_'
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-            // onLoopDone={handleDone}
-            // onType={handleType}
-          />
-        </span>
-      </h1>
+            {/* <!-- Title --> */}
+            <div className="max-w-3xl text-center mx-auto">
+              <h1 className="block font-medium text-4 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+                {/* Unlock a World of Skills and Services */}
+                <div className="App">
+                  <h1
+                    style={{
+                      paddingTop: "5rem",
+                      margin: "auto 0",
+                      fontWeight: "normal",
+                    }}>
+                    Your Service Heaven <br />
+                    <span className="text-3"
+                    >
+                      <Typewriter
+                        words={["SkillSync", " Connect", "Book", " Empower!"]}
+                        loop={1500}
+                        cursor
+                        cursorStyle="_"
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                      />
+                    </span>
+                  </h1>
+                </div>
+              </h1>
+            </div>
+            {/* <!-- End Title --> */}
+
+            <div className="max-w-3xl text-center mx-auto">
+              <p className="md:text-lg text-3 text-base md:w-5/6 mx-auto text-gray-400">
+                Join us in building a stronger, more connected community through
+                the art of service sharing. Discover, connect, and contribute
+                today at SKILLSYNC
+              </p>
+            </div>
+
+            {/* <!-- Buttons --> */}
+            <div className="text-center">
+              <Link to="/register" className="common-btn">
+                Get Register
+                <svg
+                  className="flex-shrink-0 w-4 h-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="2">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </Link>
+            </div>
+            {/* <!-- End Buttons --> */}
+          </div>
+        </div>
+      </div>
+      {/* <!-- End Hero --> */}
     </div>
-        </h1>
-      </div>
-      {/* <!-- End Title --> */}
-
-      <div className="max-w-3xl text-center mx-auto">
-        <p className="text-lg text-gray-400">Join us in building a stronger, more connected community through the art of service sharing. Discover, connect, and contribute today at SKILLSYNC</p>
-      </div>
-
-      {/* <!-- Buttons --> */}
-      <div className="text-center">
-        <Link to='/register' className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-indigo-900 to-red-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white font-bold text-base rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800" href="#">
-          Get Register
-          <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="2"  ><path d="m9 18 6-6-6-6"/></svg>
-        </Link>
-      </div>
-      {/* <!-- End Buttons --> */}
-    </div>
-  </div>
-</div>
-{/* <!-- End Hero --> */}
-        </>
-    );
+  );
 }
 
 export default Header;

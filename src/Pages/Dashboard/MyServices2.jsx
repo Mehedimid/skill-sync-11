@@ -6,22 +6,18 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import loadingAni from "../../assets/loading.json"
 import Lottie from "lottie-react";
+import useServices from "../../hooks/useServices";
+import SectionTitle from "../../shared/SectionTitle";
 
 function MyServices2(props) {
   const axiosSecure = useAxiosSecure();
-  const [myServices, setMyServices] = useState([]);
+  const {services, isPending, refetch} = useServices()
 
-  const { isPending, data } = useQuery({
-    queryKey: ["my-services"],
-    queryFn: async () => {
-      const res = await axiosSecure("/services");
-      return setMyServices(res.data);
-    },
-  });
-  console.log(myServices);
+
+  console.log(services);
 
   // axiosSecure.get(('/services'))
-  // .then(res=>setMyServices(res.data))
+  // .then(res=>setservices(res.data))
 
   if (isPending) {
     return (
@@ -38,16 +34,16 @@ function MyServices2(props) {
   return (
     <div className="min-h-screen ">
       <Helmet>
-        <title>{titles.myServices}</title>
+        <title>{titles.services}</title>
       </Helmet>
       <div>
-        <div className="md:w-2/3 space-y-12 mx-auto my-24 sizing">
-          <h1 className="text-3xl font-bold text-center">My Services</h1>
-          {myServices?.length ? (
-            myServices?.map((ser) => (
+        <div className="lg:w-2/3 space-y-12 mx-auto py-28 sizing">
+          <div><SectionTitle>My Services</SectionTitle></div>
+          {services?.length ? (
+            services?.map((ser) => (
               <MyService
-                myServices={myServices}
-                setMyServices={setMyServices}
+                services={services}
+                setMyServices={refetch}
                 key={ser._id}
                 service={ser}></MyService>
             ))

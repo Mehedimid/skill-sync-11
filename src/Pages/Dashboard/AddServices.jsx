@@ -5,6 +5,7 @@ import { authContext } from '../../AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import SectionTitle from '../../shared/SectionTitle';
 
 function AddServices(props) {
   const {user} = useContext(authContext)
@@ -43,7 +44,7 @@ e.preventDefault()
   
   }
     return (
-        <div className='min-h-screen'>
+        <div className='min-h-screen mb-10'>
           <Helmet>
             <title>
                 {titles.addServices}
@@ -53,23 +54,21 @@ e.preventDefault()
         <form
           onSubmit={handleAdd}
           className="border w-9/12 mx-auto bg-neutral-700 shadow-xl bg-opacity-10 space-y-6 mt-12 md:px-16 py-5">
-          <h1 className="text-3xl font-bold my-6 text-center text-[#86C232]">
-            Add a Service 
-          </h1>
+           <div className="mt-12"><SectionTitle>Add Service</SectionTitle></div>
           {/* service name and provider  */}
           <div className=" md:flex gap-10 ">
             <div className="md:w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">Service Name:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">Service Name:</h2>
               <input 
               required
                 type="text"
                 placeholder=" service Name"
                 name="name"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
             <div className="  md:w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">Service Provider:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">Service Provider:</h2>
               <input 
               required
                 type="text"
@@ -77,48 +76,48 @@ e.preventDefault()
                 placeholder=" Service Provider"
                 defaultValue={user?.displayName}
                 name="serviceProvider"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
           {/* description and price  */}
           <div className=" md:flex gap-10 ">
             <div className="md:w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">location:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">location:</h2>
               <input 
               required
                 type="text"
                 placeholder="location"
                 name="location"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
 
             <div className="  md:w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">price:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">price:</h2>
               <input 
               required
                 type="text"
                 placeholder="price"
                 name="price"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
           {/* des and email */}
           <div className=" md:flex gap-10 ">
             <div className="md:w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">Description:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">Description:</h2>
               <input 
               required
                 type="text"
                 placeholder=" description"
                 name="description"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
             <div className="  md:w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">email:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">email:</h2>
               <input 
               required
                 type="email"
@@ -126,31 +125,31 @@ e.preventDefault()
                 disabled
                 defaultValue={user?.email}
                 name="email"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
           {/* photo url and provider photo url*/}
           <div className=" md:flex gap-10 ">
             <div className="w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">Photo:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">Photo:</h2>
               <input 
               required
                 type="text"
                 placeholder="type photo url"
                 name="photo"
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
             <div className="w-1/2">
-              <h2 className="text-lg mb-2 text-slate-700">provider image:</h2>
+              <h2 className="text-lg mb-2 text-1 font-medium">provider image:</h2>
               <input 
               required
                 type="text"
                 placeholder="type photo url"
                 name="providerPhoto"
                 defaultValue={user.photoURL} disabled
-                className="border p-2  w-full border-[#86C232] rounded"
+                className="border p-2  w-full border-[#B33030] rounded"
               />
             </div>
           </div>
@@ -158,7 +157,7 @@ e.preventDefault()
             <button
               type="submit"
               value="Add Coffe"
-              className="w-full text-white font-bold bg-[#86C232] p-2">
+              className="common-btn2 w-full font-bold border-2 border-gray-400">
               
               Add Service 
             </button>

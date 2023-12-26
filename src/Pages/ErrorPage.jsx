@@ -8,7 +8,7 @@ function ErrorPage(props) {
   const error = useRouteError();
   return (
     <div>
-      <div className="bg-[#222629] bg-opacity-90">
+      <div className="bg-2 bg-opacity-90">
         <Navbar></Navbar>
       </div>
 

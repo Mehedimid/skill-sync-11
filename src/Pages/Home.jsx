@@ -7,9 +7,13 @@ import ExtraSection2 from "../Components/extra sections/ExtraSection2";
 import ExtraSection3 from "../Components/extra sections/ExtraSection3";
 import Popular from "../Components/Popular";
 import { Link } from "react-router-dom";
+import useServices from "../hooks/useServices";
 
 function Home(props) {
+  const {services} = useServices()
+
   return (
+
     <>
       <Helmet>
         <title>{titles.home}</title>
@@ -17,32 +21,22 @@ function Home(props) {
       
       <Header></Header>
 
-      <main className="space-y-24 sizing my-24">
-        <section className="bg-[#86C232] bg-opacity-20 py-6 rounded-xl">
-          <h1 className="text-center text-3xl font-bold mb-6 ">
-            Our Popular Services
-          </h1>
+      <main className=" space-y-28 my-28 w-11/12 lg:w-10/12 mx-auto">
+        <section>
           <Popular></Popular>
-          <div className="flex justify-center mt-6">
-            <Link
-              className="btn text-[#86C232] bg-black bg-opacity-90"
-              to="/all-services">
-              Show All
-            </Link>
-          </div>
         </section>
 
-        <section className="bg-neutral-200">
+        {/* <section className="border border-black">
           <ExtraSection1></ExtraSection1>
-        </section>
+        </section> */}
 
-        <section className=" bg-[#86C232] bg-opacity-20">
+        <section>
           <ExtraSection2></ExtraSection2>
         </section>
 
-        <section>
+        {/* <section>
           <ExtraSection3></ExtraSection3>
-        </section>
+        </section> */}
       </main>
     </>
   );

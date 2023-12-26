@@ -2,17 +2,19 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../AuthProvider";
 import Swal from "sweetalert2";
+import { MdDeleteForever } from "react-icons/md";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { FaEdit } from "react-icons/fa";
 
 function MyService({ service, setMyServices, myServices }) {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(authContext);
   const [ser, setser] = useState(service);
+  const { refetch } = setMyServices;
   const {
     serviceName,
     description,
     serviceProvider,
-    providerEmail,
     _id,
     price,
     image,
@@ -34,12 +36,12 @@ function MyService({ service, setMyServices, myServices }) {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if(result.isConfirmed){
+      if (result.isConfirmed) {
         axiosSecure.delete(`/services/${id}`).then((data) => {
           if (data.data.deletedCount > 0) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
             const remain = myServices.filter((card) => card._id !== id);
-            setMyServices(remain);
+            refetch();
             console.log("deleted");
           }
         });
@@ -48,51 +50,63 @@ function MyService({ service, setMyServices, myServices }) {
   };
   return (
     <>
-      <div className="flex flex-col  bg-[#86C232] bg-opacity-30 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
-        {/* provider img & name  */}
-        <div className="flex items-center space-x-4">
-          <img
-            alt=""
-            src={providerImg}
-            className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
-          />
-          <div className="flex flex-col space-y-1">
-            <span className="text-sm font-semibold">{serviceProvider}</span>
+      <div className="flex flex-col bg-[#FFFBF5] border-2 p-6 space-y-6 overflow-hidden rounded-lg shadow-xl dark:bg-gray-900 dark:text-gray-100">
+        {/* container  */}
+        <div className="flex flex-col md:flex-row  gap-2">
+          {/* image  */}
+          <div className="md:w2/5">
+            <img
+              src={image}
+              className="object-cover w-full mb-4  h-72 dark:bg-gray-500"
+            />
+          </div>
+
+          {/* content  */}
+
+          <div className="flex justify-between items-center  gap-10 text-1 md:border-r-2 border-gray-300 md:w-2/5 ">
+            <div className="space-y-3 ">
+              {/* provider img & name  */}
+              <div className="flex items-center ">
+                <img
+                  alt=""
+                  src={providerImg}
+                  className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
+                />
+
+                <span className=" ml-2 font-semibold">{serviceProvider}</span>
+              </div>
+              <h2 className="text-2xl font-bold">{serviceName}</h2>
+              <p className=" dark:text-gray-400">{description}</p>
+              <p className="font-semibold ">Service Location : {location}</p>
+
+              <div className="mt-2">
+                <Link
+                  to={`/details/${_id}`}
+                  className="common-btn2 border-gray-300 border-2 ">
+                  View Details
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* update delete etc  */}
+          <div className="md:w-1/5 h-full flex md:justify-center items-center mt-5 md:mt-16">
+            <div className="flex gap-5  md:flex-col  items-center justify-center ">
+              <button
+                onClick={() => handleDelete(_id)}
+                className="text-4xl text-2">
+                  <MdDeleteForever />
+              </button>
+              <Link to={`/update/${_id}`} className="text-3xl text-3">
+                <FaEdit />
+              </Link>
+
+              <div>
+                <p className="text-2 font-bold text-3xl">${price}</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <img
-            src={image}
-            className="object-cover w-full mb-4  h-72 dark:bg-gray-500"
-          />
-          <h2 className="mb-1 text-xl flex justify-between font-semibold">
-            {serviceName}
-            <span className="bg-purple-950 px-2 py-1 rounded text-white ">
-              Price: {price} $
-            </span>
-          </h2>
-          <p className="my-3 dark:text-gray-400">{description}</p>
-          <p className="font-semibold">Service Location : {location}</p>
-        </div>
-        <div className="flex justify-between items-center  gap-10 ">
-          <Link
-            to={`/details/${_id}`}
-            className="p-3 rounded font-bold uppercase bg-[#86C232] hover: hover:shadow-xl hover:shadow-green-600 hover:text-lg">
-            View Details
-          </Link>
-
-          <div className="flex gap-5">
-          <button
-            onClick={() => handleDelete(_id)}
-            className="btn btn-error uppercase">
-            delete
-          </button>
-          <Link to={`/update/${_id}`} className="btn btn-accent uppercase">
-            update
-          </Link>
-        </div>
-        </div>
- 
       </div>
     </>
   );

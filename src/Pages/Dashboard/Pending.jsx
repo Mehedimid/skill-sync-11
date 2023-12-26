@@ -8,6 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 import Lottie from "lottie-react";
 import loadingAni from "../../assets/loading.json"
 import { useQuery } from "@tanstack/react-query";
+import SectionTitle from "../../shared/SectionTitle";
 
 
 function Pending(props) {
@@ -17,7 +18,7 @@ function Pending(props) {
   const axiosSecure = useAxiosSecure();
 
   const { isPending, data } = useQuery({
-    queryKey: ["pendings"],
+    queryKey: ["pendings", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/cart/${user?.email}`);
       return setPending(res.data);
@@ -35,12 +36,6 @@ function Pending(props) {
       </div>
     );
   }
-
-  // useEffect(() => {
-  //   axiosSecure.get(`/cart/${user?.email}`).then((data) => {
-  //     setPending(data.data);
-  //   });
-  // }, []);
 
   
   const handleDlt = id => {
@@ -107,15 +102,13 @@ function Pending(props) {
      {/* ======X==== */}
 
       <div className="sizing mb-24 py-10">
-        <h1 className="text-center text-4xl font-bold my-10">
-          Work Shedule
-        </h1>
+       <div className="flex items-center my-10"> <SectionTitle>Work Schedule</SectionTitle></div>
 
-        <div className="overflow-x-auto bg-orange-100 rounded-2xl shadow-xl py-6">
+        <div className="overflow-x-auto bg-4 rounded-2xl shadow-xl py-6">
           <table className="table ">
             {/* head */}
             <thead>
-              <tr className="font-bold text-xl text-[#86C232]">
+              <tr className="font-bold text-xl text-2">
                 <th></th>
                 <th>Image</th>
                 <th>Customer Email</th>
@@ -132,8 +125,8 @@ function Pending(props) {
                 pendings?.map((order, idx) => (
                   <tr
                     key={idx}
-                    className="text-base font-medium shadow-xl border-black border-b-2">
-                   <td> <button className="btn btn-error" onClick={()=>handleDlt(order._id)}>X</button></td>
+                    className=" font-medium shadow-xl border-black border-b-2">
+                   <td> <button className="btn bg-1 text-4" onClick={()=>handleDlt(order._id)}>X</button></td>
                     <td>
                       <div className="avatar">
                         <div className="mask mask-squircle w-20 h-20">
@@ -158,7 +151,7 @@ function Pending(props) {
                           {order?.status !== 'pending' ? order.status : <span className="text-red-600">pending</span> }
                         </p>
                         <select
-                          className="bg-black p-1 text-[#86C232] bg-opacity-90"
+                          className="bg-black p-1 text-4 bg-opacity-90"
                           defaultValue={order.status}
                           onChange={(e) =>
                             handleStatus(order._id, e.target.value)

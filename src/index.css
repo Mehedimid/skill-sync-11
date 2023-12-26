@@ -2,8 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-a.active{
+a.active {
   @apply bg-black py-1 px-2 rounded
 }
 
-.sizing{@apply  mx-auto w-11/12}
+.sizing {
+  @apply mx-auto w-11/12
+}
+
+.full-bg {
+  background-image: url("./assets/blurry.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-1 {
+  @apply bg-[#19282F]
+}
+
+.bg-2 {
+  @apply bg-[#B33030]
+}
+
+.bg-3 {
+  @apply bg-[#A1B57D]
+}
+
+.bg-4 {
+  @apply bg-[#D3ECA7]
+}
+
+.text-1 {
+  @apply text-[#19282F]
+}
+
+.text-2 {
+  @apply text-[#B33030]
+}
+
+.text-3 {
+  @apply text-[#A1B57D]
+}
+
+.text-4 {
+  @apply text-[#D3ECA7]
+}
+
+.layout-bg {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg clip-path='url(%26quot%3b%23SvgjsClipPath3856%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(237%2c 237%2c 245%2c 1)'%3e%3c/rect%3e%3ccircle r='27.655' cx='818.89' cy='386.01' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='15.4' cx='1424.58' cy='550.43' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='49.1' cx='820.39' cy='116.74' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='32.235' cx='1165.53' cy='216.31' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='26.465' cx='1429.96' cy='94.12' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='31.83' cx='565.29' cy='134.3' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='19.45' cx='240.74' cy='418.96' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='18.21' cx='1325.2' cy='479.24' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='52.645' cx='1141.41' cy='424.53' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='23.43' cx='687.89' cy='369.09' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='31.355' cx='368.73' cy='55.64' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3ccircle r='20.03' cx='1041.73' cy='393.63' fill='rgba(219%2c 219%2c 219%2c 1)'%3e%3c/circle%3e%3c/g%3e%3cdefs%3e%3cclipPath id='SvgjsClipPath3856'%3e%3crect width='1440' height='560' x='0' y='0'%3e%3c/rect%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.common-btn {
+  @apply inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-indigo-900 to-red-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-4 font-bold text-base rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800 hover:transition-all hover:scale-110 duration-300
+}
+
+.common-btn2 {
+  @apply px-4 md:px-7 py-3 text-2 bg-white border-2  transition-all duration-300 hover:shadow-xl hover:shadow-gray-400 hover:bg-[#B33030] hover:text-[#D3ECA7]
+}
+
+
+.font-section-title {
+  /* font-family: 'Anton', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bevan', serif; */
+  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+  /* font-family: 'Girassol', serif;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Kaushan Script', cursive;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Merriweather', serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Rampart One', sans-serif;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Work Sans', sans-serif; */
+}
+
+.input-common{@apply w-full p-3 text-[#D3ECA7] bg-black }

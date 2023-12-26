@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 function EveryService({ service }) {
-
   const {
     serviceName,
     description,
@@ -14,42 +13,40 @@ function EveryService({ service }) {
     location,
     providerImg,
   } = service;
- 
 
   return (
     <>
-      <div className="flex flex-col  bg-[#86C232] bg-opacity-30 p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
+      <div className=" md:flex bg-white rounded shadow-xl  ">
+        {/* image div  */}
+        <div className=" md:w-1/3">
+          <img src={image} className="w-full h-52 object-cover" />
+        </div>
 
-        {/* provider img & name  */}
-        <div className="flex items-center space-x-4">
-          <img
-            alt=""
-            src={providerImg}
-            className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
-          />
-          <div className="flex flex-col space-y-1">
-            <span
-              className="text-sm font-semibold">
-              {serviceProvider}
-            </span>
+        {/* contentainer div  */}
+        <div className=" md:w-2/3 md:flex p-5">
+
+          {/* content  */}
+          <div className="md:border-r-2 border-gray-300  md:w-4/6 ">
+            <h1 className="text-[23px] font-bold text-1 ">
+              {serviceName.slice(0, 25)}
+            </h1>
+            <p className="mt-3 text-1 ">
+              {description.slice(0,100)}...
+            </p>
+             
+             {/* provider details  */}
+             <div className="flex justify-start items-center gap-3 mt-3">
+              <img src={providerImg} className="w-12 h-12 rounded" />
+              <h2 className="font-bold text-xl">{serviceProvider}</h2>
+             </div>
           </div>
-        </div>
-        <div>
-          <img
-            src={image}
-            className="object-cover w-full mb-4  h-72 dark:bg-gray-500"
-          />
-          <h2 className="mb-1 text-xl font-semibold">
-           {serviceName}
-          </h2>
-          <p className="my-3 dark:text-gray-400">
-            {description}
-          </p>
-          <p className="font-semibold">Service Lcation : {location}</p>
-        </div>
-        <div className="flex flex-wrap items-center  gap-10 ">
-          <Link to={`/details/${_id}`} className="btn bg-[#86C232] hover:btn-ghost">View Details</Link>
-          <span className="bg-purple-950 px-3 py-2 rounded text-white ">Price: {price} $</span>
+
+          {/* price and button */}
+          <div className="text-center flex flex-col justify-center items-center p-3 space-y-2">
+            <p className="text-2 font-bold text-3xl">${price}</p>
+            <p className="text-1">Per service</p>
+            <Link to={`/details/${_id}`} className="common-btn2 border-2 border-gray-600 rounded-3xl font-medium">View Details</Link>
+          </div>
         </div>
       </div>
     </>
@@ -57,5 +54,3 @@ function EveryService({ service }) {
 }
 
 export default EveryService;
-
-
