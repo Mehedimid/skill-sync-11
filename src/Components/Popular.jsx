@@ -38,8 +38,8 @@ function Popular(props) {
         <div className="w-7/12">
           <SectionTitle>Key Services For You</SectionTitle>
         </div>
-        <Link className="common-btn2 text-xs md:text-base font-semibold space-x-2 border-2 border-gray-300">
-          <button className="" to="/all-services">
+        <Link  to="/all-services" className="common-btn2 text-xs md:text-base font-semibold space-x-2 border-2 border-gray-300">
+          <button >
             Show All
           </button>
           <FaArrowRight className="inline text-xs md:text-base" />

@@ -5,7 +5,7 @@
 
 Welcome to SkillSync, your go-to platform for diverse services and a thriving community of service providers. Explore a world of possibilities, from watching available services to booking and managing your own offerings.
 
-[Live LINK](https://a11-project-8d1ae.web.app/)
+[Live LINK](skill-sync1.surge.sh)
 
 ## Features
 
