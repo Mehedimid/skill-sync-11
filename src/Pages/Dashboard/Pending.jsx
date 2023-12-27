@@ -91,20 +91,20 @@ function Pending(props) {
       </div>
      
      {/*==== navbar here ==== */}
-
+{/* 
         <div className="mx-auto w-[600px] flex justify-center "> 
             <div className="flex justify-center font-semibold ">
               <h2 className="bg-slate-300 py-2 px-5 rounded"><Link to='/my-schedules'>Work Schedule</Link> </h2>
               <h2 className=" py-2 px-5"> <Link to='/my-bookings'>Bookings</Link></h2>
             </div>
-        </div>
+        </div> */}
 
      {/* ======X==== */}
 
       <div className="sizing mb-24 py-10">
-       <div className="flex items-center my-10"> <SectionTitle>Work Schedule</SectionTitle></div>
+       <div className="flex items-center mb-10 mt-20"> <SectionTitle>Work Schedule</SectionTitle></div>
 
-        <div className="overflow-x-auto bg-4 rounded-2xl shadow-xl py-6">
+        <div className="overflow-x-auto bg-white rounded-2xl shadow-xl py-6">
           <table className="table ">
             {/* head */}
             <thead>
@@ -125,7 +125,7 @@ function Pending(props) {
                 pendings?.map((order, idx) => (
                   <tr
                     key={idx}
-                    className=" font-medium shadow-xl border-black border-b-2">
+                    className=" font-medium shadow-xl text-1 border-black border-b-2">
                    <td> <button className="btn bg-1 text-4" onClick={()=>handleDlt(order._id)}>X</button></td>
                     <td>
                       <div className="avatar">

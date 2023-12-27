@@ -1,31 +1,26 @@
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import titles from "../titles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { authContext } from "../AuthProvider";
-import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
-import auth from "../firebase/firebase.config";
+import {
+  updateProfile,
+} from "firebase/auth";
 import SectionTitle from "../shared/SectionTitle";
+import { useState } from "react";
 
 function Register() {
   const { createUser } = useContext(authContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
-    //====== Log in with google =====
-    // const googleHandler = () =>{
-    //   signInWithPopup(auth, provider)
-    //   .then(result => {
-    //     toast.success('wow!!! Successfully Registered!!')
-    //   })
-    //   .catch(error =>{
-    //     toast.error(error.message)
-    //     console.error(error.message)
-    //   })
-    // }
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
-
-    //=== create user with email and pass ===
+  //=== create user with email and pass ===
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -59,9 +54,9 @@ function Register() {
           displayName: username,
           photoURL: photo,
         })
-          .then(() => console.log("profile updated"))
+          .then(() => navigate('/'))
           .catch((error) => console.log(error.message));
-          form.reset()
+        form.reset();
       })
       .catch((error) => toast.error(error.message));
   };
@@ -73,12 +68,9 @@ function Register() {
       </Helmet>
 
       <div className="mt-28">
-
         <div className="flex justify-center ">
           <SectionTitle>Please Regiter</SectionTitle>
         </div>
-
-
 
         <div className="flex  items-center my-10 justify-center text-center">
           <form
@@ -115,23 +107,30 @@ function Register() {
             />
 
             {/* password field  */}
-            <p className="text-4 mt-5 text-start font-semibold">Password</p>
-            <input
-              required
-              placeholder="Your Password"
-              name="password"
-              type="password"
-              className="input-common"
-            />
-
+            <div className="flex justify-between ">
+              <p className="text-4 mt-5 text-start font-semibold">Password</p>
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="text-4 text-xs hover:underline">
+                {showPassword ? "Hide" : "Show"} Password
+              </button>
+            </div>
+            <div className="flex items-center">
+              <input
+                required
+                placeholder="Your Password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                className="input-common"
+              />
+            </div>
             {/* sign up  */}
-            <button
-              type="submit"
-              className="common-btn mt-5">
+            <button type="submit" className="common-btn mt-5">
               Sign Up
             </button>
 
-            <p className="px-6 text-sm mt-5 text-center dark:text-gray-400">
+            <p className="px-6 text-4 mt-5 text-center dark:text-gray-400">
               Already have an account?
               <Link
                 to="/login"

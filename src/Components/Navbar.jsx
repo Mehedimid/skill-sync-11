@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo11 from "../assets/logo11.png";
 import profilesvg from "../assets/profile.svg";
 import { useContext, useState } from "react";
@@ -7,11 +7,12 @@ import { FaAlignJustify } from "react-icons/fa";
 
 function Navbar(props) {
   const { logOut, user } = useContext(authContext);
+  const goto = useNavigate()
 
   const handleLogout = () => {
     logOut()
       .then((result) => {
-        // logged out
+        goto('/')
       })
       .catch((error) => console.log(error.message));
   };

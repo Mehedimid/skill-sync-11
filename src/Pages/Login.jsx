@@ -5,23 +5,26 @@ import login from "../assets/login1.svg";
 import { useContext } from "react";
 import { authContext } from "../AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import auth from "../firebase/firebase.config";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
 
 function Login(props) {
-  const provider = new GoogleAuthProvider();
-  const { logInUser } = useContext(authContext);
+  const { logInUser, googleLogin } = useContext(authContext);
   const navigate = useNavigate();
   const location = useLocation().state?.path;
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const googleHandler = () => {
-    signInWithPopup(auth, provider)
+    googleLogin()
       .then((res) => {
         navigate(location || "/");
       })
       .catch((error) => {
-        console.error(error.message);
         toast.error(error.message);
       });
   };
@@ -34,13 +37,13 @@ function Login(props) {
 
     logInUser(email, password)
       .then((res) => {
-        // console.log(res.user)
         navigate(location || "/");
       })
       .catch((error) => {
         toast.error(error.message);
-      });
+      })
   };
+
   return (
     <div className="pt-[88px]">
       <Helmet>
@@ -53,7 +56,7 @@ function Login(props) {
         </div>
 
         <div className="flex md:w-1/2 flex-col max-w-md p-6 rounded-md sm:p-10 bg-1 bg-black ">
-          <div onClick={googleHandler} className="my-5 flex justify-center">
+          <div onClick={googleHandler} className="my-5 flex justify-center hidden">
             <button className=" common-btn ">
               <span className="text-2xl">
                 {" "}
@@ -84,24 +87,25 @@ function Login(props) {
                 />
               </div>
               {/* password field  */}
-              <div>
-                <div className="flex justify-between mb-2">
-                  <p className="font-medium">Password</p>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="text-xs hover:underline ">
-                    Forgot password?
-                  </a>
-                </div>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md border-gray-700 bg-black "
-                />
-              </div>
+     {/* password field  */}
+        <div>
+          <div className="flex justify-between mb-2">
+            <p className="font-medium">Password</p>
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="text-xs hover:underline">
+              {showPassword ? "Hide" : "Show"} Password
+            </button>
+          </div>
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            id="password"
+            placeholder="*****"
+            className="w-full px-3 py-2 border rounded-md border-gray-700 bg-black"
+          />
+        </div>
             </div>
             {/* submit field  */}
             <div className="space-y-2">

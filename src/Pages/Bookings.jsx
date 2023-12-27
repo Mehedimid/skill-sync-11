@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import loadingAni from "../assets/loading.json"
+import SectionTitle from "../shared/SectionTitle";
 
 
 function Bookings(props) {
@@ -58,37 +59,36 @@ function Bookings(props) {
 
            {/*==== navbar here ==== */}
 
-           <div className="mx-auto w-[600px] flex justify-center "> 
+           {/* <div className="mx-auto w-[600px] flex justify-center "> 
             <div className="flex justify-center font-semibold ">
               <h2 className=" py-2 px-5 "><Link to='/my-schedules'>Work Schedule</Link> </h2>
               <h2 className=" py-2 px-5 bg-slate-300 rounded"> <Link to='/my-bookings'>Bookings</Link></h2>
             </div>
-        </div>
+        </div> */}
 
      {/* ======X==== */}
 
-      <section className="sizing bg-slate-400 my-20 py-10">
-        <h1 className="text-center text-3xl font-bold my-10">My Bookings</h1>
+      <section className="lg:w-10/12 mx-auto w-11/12  my-20 py-10">
+       <div className="mb-10"><SectionTitle>My Bookings</SectionTitle></div>
 
-        <div className="flex gap-6 justify-center flex-wrap">
+        <div className="gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {bookings?.length
             ? bookings?.map((item) => (
-                <div key={item._id} className="bg-white">
+                <div key={item._id} className="bg-white shadow-xl rounded-md shadow-gray-300">
                   <div className=" items-center  space-x-4">
                     <div className="ml-2">
-                      <span className="font-bold">{item.serviceProvider}</span>
-                      <p className="text-sm">{item.providerEmail}</p>
+                      <span className="font-bold text-base px-6">Service Provider: {item.serviceProvider}</span>
                     </div>
                   </div>
-                  <div className="max-w-xs p-6  rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
+                  <div className=" px-6 mt-2  rounded-md dark:bg-gray-900 dark:text-gray-50">
                     <img
                       src={item.image}
-                      className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
+                      className="object-cover object-center w-full rounded-md h-52 dark:bg-gray-500"
                     />
                     <h2 className="mb-1 text-xl font-semibold">
                       {item.serviceName}
                     </h2>
-                    <p className="my-3 dark:text-gray-400">{item.date}</p>
+                    <p className=" dark:text-gray-400">{item.date}</p>
                     <p className="font-semibold">{item.location}</p>
                   </div>
                 </div>
