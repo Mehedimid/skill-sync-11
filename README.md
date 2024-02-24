@@ -7,6 +7,8 @@ Welcome to SkillSync, your go-to platform for diverse services and a thriving co
 
 [Live LINK](skill-sync1.surge.sh)
 
+## server side code: (https://github.com/Mehedimid/skill-sync-11-backEnd)
+
 ## Features
 
 - **Discover Services:** Explore a variety of services on our home page, enriched with detailed information about service providers.
